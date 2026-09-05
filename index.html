@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Invitación | Aylu cumple 19</title>
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <!-- PANTALLA DE INICIO -->
+    <section id="portada">
+
+        <div class="linea linea-superior"></div>
+
+        <div class="contenido-portada">
+
+            <p class="invitacion-texto">
+                TENGO EL AGRADO DE INVITARTE A CELEBRAR
+            </p>
+
+            <h1>
+                Mis
+                <span>19 años</span>
+            </h1>
+
+            <div class="nombre">
+                Aylu
+            </div>
+
+            <p class="fecha-portada">
+                24 DE SEPTIEMBRE · 2026
+            </p>
+
+            <button id="abrirInvitacion">
+                VER INVITACIÓN
+            </button>
+
+        </div>
+
+        <div class="linea linea-inferior"></div>
+
+    </section>
+
+
+    <!-- INVITACIÓN -->
+    <main id="invitacion" class="oculto">
+
+
+        <!-- ENCABEZADO -->
+        <section class="hero">
+
+            <p class="pre-titulo">
+                UNA CELEBRACIÓN ESPECIAL
+            </p>
+
+            <h1>Aylu</h1>
+
+            <div class="separador">
+                <span></span>
+                ✦
+                <span></span>
+            </div>
+
+            <h2>19 AÑOS</h2>
+
+            <p class="mensaje-principal">
+                Hay momentos que merecen ser celebrados
+                y este es uno de ellos.
+            </p>
+
+        </section>
+
+
+        <!-- INFORMACIÓN -->
+        <section class="informacion">
+
+            <div class="titulo-seccion">
+
+                <p>LA CELEBRACIÓN</p>
+
+                <h2>Información</h2>
+
+            </div>
+
+
+            <div class="datos">
+
+
+                <article class="dato">
+
+                    <div class="icono">01</div>
+
+                    <h3>FECHA</h3>
+
+                    <p>
+                        Jueves<br>
+                        <strong>24 de Septiembre</strong>
+                    </p>
+
+                </article>
+
+
+                <article class="dato">
+
+                    <div class="icono">02</div>
+
+                    <h3>HORA</h3>
+
+                    <p>
+                        A partir de las<br>
+                        <strong>11:00 hs</strong>
+                    </p>
+
+                </article>
+
+
+                <article class="dato">
+
+                    <div class="icono">03</div>
+
+                    <h3>LUGAR</h3>
+
+                    <p>
+                        Barrio Noregon<br>
+                        <strong>Lote 158</strong>
+                    </p>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTADOR -->
+        <section class="contador-seccion">
+
+            <div class="titulo-seccion oscuro">
+
+                <p>CUENTA REGRESIVA</p>
+
+                <h2>Falta muy poco</h2>
+
+            </div>
+
+
+            <div id="contador">
+
+                <div class="tiempo">
+                    <span id="dias">00</span>
+                    <small>DÍAS</small>
+                </div>
+
+                <div class="tiempo">
+                    <span id="horas">00</span>
+                    <small>HORAS</small>
+                </div>
+
+                <div class="tiempo">
+                    <span id="minutos">00</span>
+                    <small>MINUTOS</small>
+                </div>
+
+                <div class="tiempo">
+                    <span id="segundos">00</span>
+                    <small>SEGUNDOS</small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MENSAJE -->
+        <section class="mensaje">
+
+            <div class="mensaje-contenido">
+
+                <div class="detalle-superior">✦</div>
+
+                <p class="frase">
+                    "La vida está hecha de momentos,
+                    pero algunos se convierten en recuerdos
+                    para siempre."
+                </p>
+
+                <p class="texto-mensaje">
+                    Quiero compartir este día tan especial
+                    con las personas que forman parte de mi vida.
+                    Por eso, tu presencia hará que esta celebración
+                    sea aún más significativa.
+                </p>
+
+                <div class="firma">
+                    Aylu
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ACCIONES -->
+        <section class="acciones">
+
+            <div class="titulo-seccion">
+
+                <p>¿NOS ACOMPAÑÁS?</p>
+
+                <h2>Te esperamos</h2>
+
+            </div>
+
+
+            <div class="botones">
+
+
+                <!-- CAMBIAR EL LINK POR LA UBICACIÓN REAL -->
+                <a href="https://www.google.com/maps" target="_blank" class="boton boton-principal">
+                    VER UBICACIÓN
+                </a>
+
+
+                <button id="confirmarAsistencia" class="boton boton-secundario">
+                    CONFIRMAR ASISTENCIA
+                </button>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- FINAL -->
+        <footer>
+
+            <div class="separador">
+                <span></span>
+                ✦
+                <span></span>
+            </div>
+
+            <h2>Nos vemos pronto</h2>
+
+            <p>
+                24 · 09 · 2026
+            </p>
+
+            <div class="footer-nombre">
+                Aylu
+            </div>
+
+        </footer>
+
+
+    </main>
+
+
+    <!-- MODAL -->
+    <div id="modal" class="modal">
+
+        <div class="modal-contenido">
+
+            <button id="cerrarModal" class="cerrar">
+                ×
+            </button>
+
+            <p class="modal-detalle">
+                ¡QUÉ ALEGRÍA!
+            </p>
+
+            <h2>
+                Gracias por confirmar
+            </h2>
+
+            <div class="separador">
+                <span></span>
+                ✦
+                <span></span>
+            </div>
+
+            <p>
+                Será un placer compartir
+                este día tan especial con vos.
+            </p>
+
+            <h3>
+                ¡Te espero!
+            </h3>
+
+        </div>
+
+    </div>
+
+
+    <script src="./script.js"></script>
+
+</body>
+
+</html>

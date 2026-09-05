@@ -1,0 +1,790 @@
+/* =========================
+   VARIABLES
+========================= */
+
+:root {
+    --negro: #1c1b19;
+    --beige: #e8dfd1;
+    --beige-claro: #f5f1eb;
+    --dorado: #aa8b5a;
+    --blanco: #ffffff;
+    --gris: #6e6962;
+}
+
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    background: var(--beige-claro);
+    color: var(--negro);
+    font-family: "Montserrat", sans-serif;
+    overflow-x: hidden;
+}
+
+
+button {
+    font-family: inherit;
+}
+
+
+/* =========================
+   PORTADA
+========================= */
+
+#portada {
+    min-height: 100vh;
+    background: var(--negro);
+
+    color: var(--beige-claro);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 40px 20px;
+
+    position: relative;
+}
+
+
+.contenido-portada {
+    max-width: 800px;
+
+    animation: aparecer 1.5s ease;
+}
+
+
+.invitacion-texto {
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    color: var(--dorado);
+
+    margin-bottom: 35px;
+}
+
+
+.contenido-portada h1 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(4rem, 10vw, 8rem);
+    font-weight: 400;
+
+    line-height: 0.8;
+}
+
+
+.contenido-portada h1 span {
+    display: block;
+    font-size: 0.55em;
+    margin-top: 20px;
+
+    letter-spacing: 5px;
+}
+
+
+.nombre {
+    font-family: "Cormorant Garamond", serif;
+
+    color: var(--dorado);
+
+    font-size: clamp(3rem, 7vw, 5.5rem);
+
+    margin-top: 30px;
+}
+
+
+.fecha-portada {
+    margin-top: 35px;
+
+    letter-spacing: 3px;
+    font-size: 0.75rem;
+}
+
+
+#abrirInvitacion {
+    margin-top: 45px;
+
+    background: transparent;
+    color: var(--beige-claro);
+
+    border: 1px solid var(--dorado);
+
+    padding: 16px 32px;
+
+    letter-spacing: 2px;
+    font-size: 0.7rem;
+
+    cursor: pointer;
+
+    transition: 0.4s ease;
+}
+
+
+#abrirInvitacion:hover {
+    background: var(--dorado);
+    color: var(--negro);
+}
+
+
+.linea {
+    position: absolute;
+
+    width: min(85%, 900px);
+    height: 1px;
+
+    background: var(--dorado);
+}
+
+
+.linea-superior {
+    top: 40px;
+}
+
+
+.linea-inferior {
+    bottom: 40px;
+}
+
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================
+   OCULTO
+========================= */
+
+.oculto {
+    display: none;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+
+    background: var(--beige-claro);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 80px 20px;
+}
+
+
+.pre-titulo,
+.titulo-seccion>p {
+    color: var(--dorado);
+
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+
+    margin-bottom: 20px;
+}
+
+
+.hero h1 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(5rem, 13vw, 10rem);
+    font-weight: 500;
+
+    line-height: 0.8;
+}
+
+
+.hero h2 {
+    font-size: 1rem;
+    letter-spacing: 8px;
+
+    font-weight: 400;
+
+    margin-top: 25px;
+}
+
+
+.separador {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+
+    color: var(--dorado);
+
+    margin: 35px 0;
+}
+
+
+.separador span {
+    display: block;
+
+    width: 70px;
+    height: 1px;
+
+    background: var(--dorado);
+}
+
+
+.mensaje-principal {
+    max-width: 500px;
+
+    color: var(--gris);
+
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+
+/* =========================
+   TITULOS
+========================= */
+
+.titulo-seccion {
+    text-align: center;
+
+    margin-bottom: 55px;
+}
+
+
+.titulo-seccion h2 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 500;
+}
+
+
+/* =========================
+   INFORMACION
+========================= */
+
+.informacion {
+    padding: 110px 20px;
+
+    background: var(--blanco);
+}
+
+
+.datos {
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    border-top: 1px solid var(--beige);
+    border-bottom: 1px solid var(--beige);
+}
+
+
+.dato {
+    text-align: center;
+
+    padding: 50px 25px;
+
+    border-right: 1px solid var(--beige);
+}
+
+
+.dato:last-child {
+    border-right: none;
+}
+
+
+.icono {
+    color: var(--dorado);
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 2rem;
+
+    margin-bottom: 25px;
+}
+
+
+.dato h3 {
+    font-size: 0.65rem;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 20px;
+}
+
+
+.dato p {
+    color: var(--gris);
+
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+
+.dato strong {
+    color: var(--negro);
+
+    font-weight: 500;
+}
+
+
+/* =========================
+   CONTADOR
+========================= */
+
+.contador-seccion {
+    background: var(--negro);
+
+    color: var(--beige-claro);
+
+    padding: 110px 20px;
+}
+
+
+.oscuro h2 {
+    color: var(--beige-claro);
+}
+
+
+#contador {
+    max-width: 850px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 1px;
+
+    background: rgba(255, 255, 255, 0.15);
+}
+
+
+.tiempo {
+    background: var(--negro);
+
+    text-align: center;
+
+    padding: 35px 15px;
+}
+
+
+.tiempo span {
+    display: block;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(3rem, 7vw, 5rem);
+
+    color: var(--dorado);
+}
+
+
+.tiempo small {
+    display: block;
+
+    margin-top: 10px;
+
+    letter-spacing: 2px;
+    font-size: 0.6rem;
+}
+
+
+/* =========================
+   MENSAJE
+========================= */
+
+.mensaje {
+    padding: 120px 20px;
+
+    background: var(--beige);
+}
+
+
+.mensaje-contenido {
+    max-width: 750px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.detalle-superior {
+    color: var(--dorado);
+
+    font-size: 2rem;
+
+    margin-bottom: 35px;
+}
+
+
+.frase {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(2rem, 5vw, 3.5rem);
+
+    line-height: 1.2;
+
+    margin-bottom: 45px;
+}
+
+
+.texto-mensaje {
+    max-width: 550px;
+
+    margin: auto;
+
+    color: #5d5750;
+
+    font-size: 0.95rem;
+    line-height: 2;
+}
+
+
+.firma {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 3rem;
+
+    color: var(--dorado);
+
+    margin-top: 40px;
+}
+
+
+/* =========================
+   ACCIONES
+========================= */
+
+.acciones {
+    padding: 110px 20px;
+
+    background: var(--blanco);
+}
+
+
+.botones {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+
+.boton {
+    min-width: 220px;
+
+    text-align: center;
+
+    padding: 17px 25px;
+
+    text-decoration: none;
+
+    letter-spacing: 2px;
+
+    font-size: 0.65rem;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+
+.boton-principal {
+    background: var(--negro);
+    color: var(--blanco);
+
+    border: 1px solid var(--negro);
+}
+
+
+.boton-principal:hover {
+    background: var(--dorado);
+    border-color: var(--dorado);
+}
+
+
+.boton-secundario {
+    background: transparent;
+    color: var(--negro);
+
+    border: 1px solid var(--dorado);
+}
+
+
+.boton-secundario:hover {
+    background: var(--beige);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: var(--negro);
+
+    color: var(--beige-claro);
+
+    text-align: center;
+
+    padding: 80px 20px;
+}
+
+
+footer h2 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(3rem, 7vw, 5rem);
+
+    font-weight: 400;
+}
+
+
+footer p {
+    color: var(--dorado);
+
+    letter-spacing: 4px;
+
+    font-size: 0.7rem;
+
+    margin-top: 25px;
+}
+
+
+.footer-nombre {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 2.5rem;
+
+    margin-top: 35px;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.7);
+
+    z-index: 100;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+
+.modal-contenido {
+    width: 100%;
+    max-width: 500px;
+
+    background: var(--beige-claro);
+
+    text-align: center;
+
+    padding: 70px 35px;
+
+    position: relative;
+
+    animation: modalAparecer 0.5s ease;
+}
+
+
+@keyframes modalAparecer {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+.cerrar {
+    position: absolute;
+
+    top: 15px;
+    right: 20px;
+
+    border: none;
+    background: none;
+
+    font-size: 2rem;
+
+    cursor: pointer;
+}
+
+
+.modal-detalle {
+    color: var(--dorado);
+
+    font-size: 0.65rem;
+
+    letter-spacing: 3px;
+}
+
+
+.modal-contenido h2 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 3rem;
+
+    font-weight: 500;
+
+    margin-top: 20px;
+}
+
+
+.modal-contenido p:not(.modal-detalle) {
+    color: var(--gris);
+
+    line-height: 1.8;
+}
+
+
+.modal-contenido h3 {
+    font-family: "Cormorant Garamond", serif;
+
+    color: var(--dorado);
+
+    font-size: 2.5rem;
+
+    margin-top: 30px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+    .datos {
+        grid-template-columns: 1fr;
+    }
+
+
+    .dato {
+        border-right: none;
+        border-bottom: 1px solid var(--beige);
+    }
+
+
+    .dato:last-child {
+        border-bottom: none;
+    }
+
+
+    #contador {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    .tiempo {
+        padding: 30px 10px;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    #portada {
+        padding: 30px 15px;
+    }
+
+
+    .invitacion-texto {
+        line-height: 1.8;
+        letter-spacing: 2px;
+    }
+
+
+    .fecha-portada {
+        line-height: 1.8;
+    }
+
+
+    .separador span {
+        width: 40px;
+    }
+
+
+    .informacion,
+    .contador-seccion,
+    .mensaje,
+    .acciones {
+        padding: 80px 15px;
+    }
+
+
+    .botones {
+        flex-direction: column;
+    }
+
+
+    .boton {
+        width: 100%;
+    }
+
+
+    .modal-contenido {
+        padding: 60px 25px;
+    }
+
+}
