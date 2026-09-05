@@ -1,356 +1,788 @@
-/* =====================================
+/* =========================================
+   ELEMENTOS
+========================================= */
+
+const portada =
+    document.getElementById("portada");
+
+const invitacion =
+    document.getElementById("invitacion");
+
+const abrirInvitacion =
+    document.getElementById("abrirInvitacion");
+
+
+/* =========================================
    ABRIR INVITACIÓN
-===================================== */
+========================================= */
 
-const abrirInvitacion = document.getElementById("abrirInvitacion");
-const portada = document.getElementById("portada");
-const invitacion = document.getElementById("invitacion");
+abrirInvitacion.addEventListener(
+    "click",
+    () => {
 
+        portada.style.opacity = "0";
 
-abrirInvitacion.addEventListener("click", () => {
-
-    portada.style.opacity = "0";
-    portada.style.transform = "scale(1.05)";
-
-    setTimeout(() => {
-
-        portada.style.display = "none";
-
-        invitacion.classList.remove("oculto");
-
-        window.scrollTo({
-            top: 0,
-            behavior: "instant"
-        });
-
-    }, 700);
-
-});
+        portada.style.transform =
+            "scale(1.04)";
 
 
-/* =====================================
-   CUENTA REGRESIVA
-===================================== */
+        setTimeout(() => {
+
+            portada.style.display =
+                "none";
+
+            invitacion.classList.remove(
+                "oculto"
+            );
+
+            window.scrollTo(
+                0,
+                0
+            );
+
+        }, 750);
+
+    }
+);
+
+
+/* =========================================
+   ANIMACIONES AL HACER SCROLL
+========================================= */
+
+const elementosReveal =
+    document.querySelectorAll(
+        ".reveal"
+    );
+
+
+const observador =
+    new IntersectionObserver(
+        (entradas) => {
+
+            entradas.forEach(
+                (entrada) => {
+
+                    if (
+                        entrada.isIntersecting
+                    ) {
+
+                        entrada.target.classList.add(
+                            "visible"
+                        );
+
+                        observador.unobserve(
+                            entrada.target
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold: 0.15,
+
+            rootMargin:
+                "0px 0px -40px 0px"
+        }
+    );
+
+
+elementosReveal.forEach(
+    (elemento) => {
+
+        observador.observe(
+            elemento
+        );
+
+    }
+);
+
+
+/* =========================================
+   CONTADOR
+========================================= */
 
 /*
-    IMPORTANTE:
+    Cumpleaños:
+    24 de septiembre
 
-    El cumpleaños es el 24.
-
-    Pero el festejo es el 26.
-
-    Por eso el contador apunta al:
-    26 de septiembre de 2026
-    a las 11:00 hs.
+    Festejo:
+    26 de septiembre
+    11:00 hs
 */
 
-const fechaFestejo = new Date(
-    "2026-09-26T11:00:00"
-).getTime();
+const fechaFestejo =
+    new Date(
+        "2026-09-26T11:00:00"
+    ).getTime();
+
+
+const diasElemento =
+    document.getElementById(
+        "dias"
+    );
+
+const horasElemento =
+    document.getElementById(
+        "horas"
+    );
+
+const minutosElemento =
+    document.getElementById(
+        "minutos"
+    );
+
+const segundosElemento =
+    document.getElementById(
+        "segundos"
+    );
+
+
+function animarNumero(elemento) {
+
+    elemento.animate(
+        [
+            {
+                opacity: .4,
+                transform:
+                    "translateY(-8px)"
+            },
+
+            {
+                opacity: 1,
+                transform:
+                    "translateY(0)"
+            }
+        ],
+        {
+            duration: 350,
+            easing: "ease-out"
+        }
+    );
+
+}
+
+
+let valoresAnteriores = {
+    dias: null,
+    horas: null,
+    minutos: null,
+    segundos: null
+};
 
 
 function actualizarContador() {
 
-    const ahora = new Date().getTime();
+    const ahora =
+        new Date().getTime();
 
-    const diferencia = fechaFestejo - ahora;
+
+    const diferencia =
+        fechaFestejo - ahora;
 
 
-    if (diferencia <= 0) {
+    if (
+        diferencia <= 0
+    ) {
 
-        document.getElementById("dias").textContent = "00";
-        document.getElementById("horas").textContent = "00";
-        document.getElementById("minutos").textContent = "00";
-        document.getElementById("segundos").textContent = "00";
+        diasElemento.textContent =
+            "00";
+
+        horasElemento.textContent =
+            "00";
+
+        minutosElemento.textContent =
+            "00";
+
+        segundosElemento.textContent =
+            "00";
 
         return;
+
     }
 
 
-    const dias = Math.floor(
-        diferencia / (1000 * 60 * 60 * 24)
-    );
-
-    const horas = Math.floor(
-        (diferencia / (1000 * 60 * 60)) % 24
-    );
-
-    const minutos = Math.floor(
-        (diferencia / (1000 * 60)) % 60
-    );
-
-    const segundos = Math.floor(
-        (diferencia / 1000) % 60
-    );
+    const dias =
+        Math.floor(
+            diferencia /
+            (
+                1000 *
+                60 *
+                60 *
+                24
+            )
+        );
 
 
-    document.getElementById("dias").textContent =
-        String(dias).padStart(2, "0");
+    const horas =
+        Math.floor(
+            (
+                diferencia /
+                (
+                    1000 *
+                    60 *
+                    60
+                )
+            ) % 24
+        );
 
-    document.getElementById("horas").textContent =
-        String(horas).padStart(2, "0");
 
-    document.getElementById("minutos").textContent =
-        String(minutos).padStart(2, "0");
+    const minutos =
+        Math.floor(
+            (
+                diferencia /
+                (
+                    1000 *
+                    60
+                )
+            ) % 60
+        );
 
-    document.getElementById("segundos").textContent =
-        String(segundos).padStart(2, "0");
+
+    const segundos =
+        Math.floor(
+            (
+                diferencia /
+                1000
+            ) % 60
+        );
+
+
+    const valores = {
+
+        dias,
+
+        horas,
+
+        minutos,
+
+        segundos
+
+    };
+
+
+    diasElemento.textContent =
+        String(dias)
+            .padStart(
+                2,
+                "0"
+            );
+
+
+    horasElemento.textContent =
+        String(horas)
+            .padStart(
+                2,
+                "0"
+            );
+
+
+    minutosElemento.textContent =
+        String(minutos)
+            .padStart(
+                2,
+                "0"
+            );
+
+
+    segundosElemento.textContent =
+        String(segundos)
+            .padStart(
+                2,
+                "0"
+            );
+
+
+    if (
+        valoresAnteriores.dias !==
+        valores.dias
+    ) {
+
+        animarNumero(
+            diasElemento
+        );
+
+    }
+
+
+    if (
+        valoresAnteriores.horas !==
+        valores.horas
+    ) {
+
+        animarNumero(
+            horasElemento
+        );
+
+    }
+
+
+    if (
+        valoresAnteriores.minutos !==
+        valores.minutos
+    ) {
+
+        animarNumero(
+            minutosElemento
+        );
+
+    }
+
+
+    if (
+        valoresAnteriores.segundos !==
+        valores.segundos
+    ) {
+
+        animarNumero(
+            segundosElemento
+        );
+
+    }
+
+
+    valoresAnteriores =
+        valores;
 
 }
 
 
 actualizarContador();
 
-setInterval(actualizarContador, 1000);
+
+setInterval(
+    actualizarContador,
+    1000
+);
 
 
-/* =====================================
-   ANIMACIONES AL HACER SCROLL
-===================================== */
+/* =========================================
+   SECCIÓN SORPRESA
+========================================= */
 
-const elementos = document.querySelectorAll(".revelar");
+const sorpresaBtn =
+    document.getElementById(
+        "sorpresaBtn"
+    );
 
 
-const observador = new IntersectionObserver(
-    (entradas) => {
+const sorpresa =
+    document.getElementById(
+        "sorpresa"
+    );
 
-        entradas.forEach((entrada) => {
 
-            if (entrada.isIntersecting) {
+sorpresaBtn.addEventListener(
+    "click",
+    () => {
 
-                entrada.target.classList.add("visible");
+        const abierta =
+            sorpresa.classList.toggle(
+                "abierta"
+            );
 
-            }
 
-        });
+        if (abierta) {
 
-    },
-    {
-        threshold: 0.15
+            sorpresaBtn.innerHTML =
+                `
+                OCULTAR
+                <span>↑</span>
+                `;
+
+        } else {
+
+            sorpresaBtn.innerHTML =
+                `
+                DESCUBRIR
+                <span>✦</span>
+                `;
+
+        }
+
     }
 );
 
 
-elementos.forEach((elemento) => {
-
-    observador.observe(elemento);
-
-});
-
-
-/* =====================================
-   SECCIÓN SORPRESA
-===================================== */
-
-const sorpresaBtn =
-    document.getElementById("sorpresaBtn");
-
-const sorpresa =
-    document.getElementById("sorpresa");
-
-
-sorpresaBtn.addEventListener("click", () => {
-
-    sorpresa.classList.toggle("abierta");
-
-
-    if (sorpresa.classList.contains("abierta")) {
-
-        sorpresaBtn.innerHTML =
-            'OCULTAR <span>↑</span>';
-
-    } else {
-
-        sorpresaBtn.innerHTML =
-            'DESCUBRIR <span>✦</span>';
-
-    }
-
-});
-
-
-/* =====================================
-   MODAL CONFIRMACIÓN
-===================================== */
+/* =========================================
+   MODAL
+========================================= */
 
 const confirmarAsistencia =
-    document.getElementById("confirmarAsistencia");
+    document.getElementById(
+        "confirmarAsistencia"
+    );
+
 
 const modal =
-    document.getElementById("modal");
+    document.getElementById(
+        "modal"
+    );
+
 
 const cerrarModal =
-    document.getElementById("cerrarModal");
+    document.getElementById(
+        "cerrarModal"
+    );
 
 
-confirmarAsistencia.addEventListener("click", () => {
+confirmarAsistencia.addEventListener(
+    "click",
+    () => {
 
-    modal.classList.add("activo");
+        modal.classList.add(
+            "activo"
+        );
 
-    crearConfeti();
+        document.body.classList.add(
+            "modal-abierto"
+        );
 
-});
-
-
-cerrarModal.addEventListener("click", () => {
-
-    modal.classList.remove("activo");
-
-});
-
-
-modal.addEventListener("click", (e) => {
-
-    if (e.target === modal) {
-
-        modal.classList.remove("activo");
+        crearConfeti();
 
     }
+);
 
-});
+
+function cerrarVentana() {
+
+    modal.classList.remove(
+        "activo"
+    );
+
+    document.body.classList.remove(
+        "modal-abierto"
+    );
+
+}
 
 
-/* =====================================
+cerrarModal.addEventListener(
+    "click",
+    cerrarVentana
+);
+
+
+modal.addEventListener(
+    "click",
+    (evento) => {
+
+        if (
+            evento.target === modal
+        ) {
+
+            cerrarVentana();
+
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    (evento) => {
+
+        if (
+            evento.key === "Escape"
+        ) {
+
+            cerrarVentana();
+
+        }
+
+    }
+);
+
+
+/* =========================================
    CONFETI
-===================================== */
+========================================= */
 
 function crearConfeti() {
 
-    for (let i = 0; i < 35; i++) {
+    const cantidad =
+        window.innerWidth < 600
+            ? 25
+            : 45;
+
+
+    for (
+        let i = 0;
+        i < cantidad;
+        i++
+    ) {
 
         const confeti =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
-        confeti.style.position = "fixed";
-        confeti.style.width = "7px";
-        confeti.style.height = "7px";
+
+        confeti.style.position =
+            "fixed";
+
+
+        confeti.style.width =
+            Math.random() * 6 + 4 +
+            "px";
+
+
+        confeti.style.height =
+            Math.random() * 6 + 4 +
+            "px";
+
 
         confeti.style.background =
             i % 2 === 0
                 ? "#aa8b5a"
                 : "#e8dfd1";
 
+
         confeti.style.left =
-            Math.random() * 100 + "vw";
-
-        confeti.style.top = "-10px";
-
-        confeti.style.zIndex = "2000";
-
-        confeti.style.pointerEvents = "none";
-
-        confeti.style.transform =
-            `rotate(${Math.random() * 360}deg)`;
+            Math.random() * 100 +
+            "vw";
 
 
-        document.body.appendChild(confeti);
+        confeti.style.top =
+            "-15px";
+
+
+        confeti.style.zIndex =
+            "10000";
+
+
+        confeti.style.pointerEvents =
+            "none";
+
+
+        confeti.style.borderRadius =
+            Math.random() > .5
+                ? "50%"
+                : "0";
+
+
+        document.body.appendChild(
+            confeti
+        );
 
 
         const duracion =
-            2000 + Math.random() * 2500;
+            1800 +
+            Math.random() * 2500;
+
+
+        const movimientoX =
+            (
+                Math.random() -
+                .5
+            ) * 250;
 
 
         confeti.animate(
             [
+
                 {
                     transform:
-                        `translateY(0) rotate(0deg)`,
+                        "translateY(0) rotate(0deg)",
                     opacity: 1
                 },
 
                 {
                     transform:
-                        `translateY(110vh) rotate(720deg)`,
+                        `
+                        translate(
+                            ${movimientoX}px,
+                            110vh
+                        )
+                        rotate(720deg)
+                        `,
                     opacity: 0
                 }
+
             ],
             {
-                duration: duracion,
-                easing: "ease-out"
+                duration:
+                    duracion,
+
+                easing:
+                    "cubic-bezier(.2,.7,.3,1)"
             }
         );
 
 
-        setTimeout(() => {
+        setTimeout(
+            () => {
 
-            confeti.remove();
+                confeti.remove();
 
-        }, duracion);
+            },
+            duracion
+        );
 
     }
 
 }
 
 
-/* =====================================
-   EFECTO PARALLAX SUAVE
-===================================== */
+/* =========================================
+   PARALLAX SOLO EN PC
+========================================= */
 
-window.addEventListener("mousemove", (e) => {
-
-    const decoraciones =
-        document.querySelectorAll(".hero-decoracion");
-
-    const x =
-        (e.clientX / window.innerWidth - 0.5) * 20;
-
-    const y =
-        (e.clientY / window.innerHeight - 0.5) * 20;
+const puedeMoverMouse =
+    window.matchMedia(
+        "(min-width: 900px)"
+    ).matches;
 
 
-    decoraciones.forEach((decoracion, index) => {
+if (puedeMoverMouse) {
 
-        const multiplicador =
-            index === 0 ? 1 : -1;
-
-        decoracion.style.transform =
-            `translate(${x * multiplicador}px,
-                       ${y * multiplicador}px)`;
-
-    });
-
-});
-
-
-/* =====================================
-   EFECTO CLICK EN LA FECHA 26
-===================================== */
-
-const numero26 =
-    document.querySelector(".fecha-festejo .numero-fecha");
-
-
-if (numero26) {
-
-    numero26.addEventListener("click", () => {
-
-        numero26.animate(
-            [
-                {
-                    transform: "scale(1)"
-                },
-
-                {
-                    transform: "scale(1.2)"
-                },
-
-                {
-                    transform: "scale(1)"
-                }
-            ],
-            {
-                duration: 600
-            }
+    const circulos =
+        document.querySelectorAll(
+            ".circulo-decorativo"
         );
 
-    });
+
+    window.addEventListener(
+        "mousemove",
+        (evento) => {
+
+            const x =
+                (
+                    evento.clientX /
+                    window.innerWidth -
+                    .5
+                ) * 25;
+
+
+            const y =
+                (
+                    evento.clientY /
+                    window.innerHeight -
+                    .5
+                ) * 25;
+
+
+            circulos.forEach(
+                (
+                    circulo,
+                    index
+                ) => {
+
+                    const multiplicador =
+                        index === 0
+                            ? 1
+                            : -1;
+
+
+                    circulo.style.transform =
+                        `
+                        translate(
+                            ${x * multiplicador}px,
+                            ${y * multiplicador}px
+                        )
+                        `;
+
+                }
+            );
+
+        }
+    );
 
 }
 
 
-/* =====================================
-   TRANSICIÓN DE PORTADA
-===================================== */
+/* =========================================
+   EFECTO EN LA FECHA 26
+========================================= */
 
-portada.style.transition =
-    "opacity .7s ease, transform .7s ease";
+const fechaImportante =
+    document.querySelector(
+        ".fecha-importante .fecha-numero"
+    );
+
+
+if (fechaImportante) {
+
+    fechaImportante.addEventListener(
+        "click",
+        () => {
+
+            fechaImportante.animate(
+                [
+
+                    {
+                        transform:
+                            "scale(1)"
+                    },
+
+                    {
+                        transform:
+                            "scale(1.15) rotate(4deg)"
+                    },
+
+                    {
+                        transform:
+                            "scale(1) rotate(0)"
+                    }
+
+                ],
+                {
+                    duration: 600,
+
+                    easing:
+                        "ease-out"
+                }
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   EFECTO TÁCTIL EN CELULAR
+========================================= */
+
+const tarjetas =
+    document.querySelectorAll(
+        ".info-card, .sorpresa-item"
+    );
+
+
+tarjetas.forEach(
+    (tarjeta) => {
+
+        tarjeta.addEventListener(
+            "touchstart",
+            () => {
+
+                tarjeta.style.transform =
+                    "scale(.97)";
+
+            },
+            {
+                passive: true
+            }
+        );
+
+
+        tarjeta.addEventListener(
+            "touchend",
+            () => {
+
+                tarjeta.style.transform =
+                    "";
+
+            },
+            {
+                passive: true
+            }
+        );
+
+    }
+);
