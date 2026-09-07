@@ -1571,265 +1571,855 @@ body {
    TABLET
 ========================================================= */
 
-@media (max-width: 700px) {
-
-    .screen {
-        min-height: 100vh;
-
-        padding: 20px 15px 45px;
-
-        align-items: flex-start;
-    }
-
-
-    #terminalScreen,
-    #transmissionScreen,
-    #archiveScreen,
-    #analysisScreen,
-    #finalScreen,
-    #confirmationScreen {
-        padding-top: 20px;
-    }
-
-
-    .terminal-body {
-        padding: 35px 22px 30px;
-    }
-
-
-    .terminal-heading {
-        font-size: 28px;
-
-        letter-spacing: 3px;
-    }
-
-
-    .terminal-subtitle {
-        font-size: 9px;
-
-        letter-spacing: 2px;
-    }
-
-
-    .terminal-lines {
-        margin-top: 25px;
-
-        font-size: 10px;
-
-        min-height: 175px;
-    }
-
-
-    .files-grid {
-        grid-template-columns: 1fr;
-    }
-
-
-    .archive-header h1 {
-        font-size: 30px;
-    }
-
-
-    .glitch {
-        font-size: 43px;
-
-        letter-spacing: 2px;
-    }
-
-
-    .final-date {
-        font-size: clamp(42px, 13vw, 75px);
-
-        letter-spacing: -2px;
-    }
-
-
-    .final-message {
-        margin-top: 35px;
-    }
-
-
-    .confirmation-data {
-        grid-template-columns: 1fr;
-    }
-
-
-    .confirmation-data div {
-        padding: 15px;
-    }
-}
-
-
 /* =========================================================
-   CELULAR PEQUEÑO
+   RESPONSIVE GENERAL
 ========================================================= */
 
-@media (max-width: 420px) {
+@media (max-width: 700px) {
+
+    html,
+    body {
+        width: 100%;
+        min-height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    body {
+        font-size: 14px;
+    }
 
     .screen {
-        padding-left: 12px;
-        padding-right: 12px;
-        padding-bottom: 40px;
+        position: absolute;
+
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        min-height: 100dvh;
+
+        padding: 15px 12px 35px;
+
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+
+        overflow: visible;
+    }
+
+    .screen.active {
+        position: relative;
+
+        min-height: 100dvh;
+
+        height: auto;
     }
 
 
-    #terminalScreen,
-    #transmissionScreen,
-    #archiveScreen,
-    #analysisScreen,
-    #finalScreen,
-    #confirmationScreen {
+    /* =====================================================
+       TERMINAL
+    ===================================================== */
+
+    #terminalScreen {
         padding-top: 15px;
     }
 
+    .terminal {
+        width: 100%;
+        max-width: 100%;
 
-    .terminal-top {
-        padding: 0 10px;
+        border-radius: 10px;
     }
 
+    .terminal-top {
+        height: 42px;
 
-    .terminal-title {
+        padding: 0 10px;
+
         font-size: 9px;
     }
 
+    .terminal-dots {
+        gap: 5px;
+    }
+
+    .terminal-dots span {
+        width: 7px;
+        height: 7px;
+    }
+
+    .terminal-title {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
 
     .terminal-status {
-        font-size: 8px;
+        font-size: 7px;
+        letter-spacing: 0.5px;
     }
-
 
     .terminal-body {
-        padding: 30px 17px 25px;
+        padding: 28px 17px 25px;
     }
-
 
     .terminal-logo {
-        width: 60px;
-        height: 60px;
+        width: 58px;
+        height: 58px;
 
         margin-bottom: 15px;
-    }
 
+        font-size: 20px;
+    }
 
     .terminal-heading {
         font-size: 24px;
+
+        line-height: 1.15;
+
+        letter-spacing: 2px;
+
+        overflow-wrap: anywhere;
     }
 
+    .terminal-subtitle {
+        margin-top: 7px;
+
+        font-size: 8px;
+
+        line-height: 1.5;
+
+        letter-spacing: 1.5px;
+    }
 
     .terminal-lines {
+        margin-top: 22px;
+
+        min-height: 0;
+
         font-size: 9px;
 
         line-height: 1.8;
 
-        min-height: 165px;
+        overflow-wrap: anywhere;
     }
 
+    .progress-area {
+        margin-top: 18px;
+    }
 
-    .main-button,
-    .location-button,
-    .yes-button {
+    .progress-info {
+        font-size: 8px;
+    }
+
+    .progress-track {
+        height: 4px;
+    }
+
+    .main-button {
         width: 100%;
-    }
 
+        margin-top: 20px;
 
-    .archive-header {
-        margin-bottom: 20px;
-    }
+        padding: 14px 18px;
 
-
-    .archive-header h1 {
-        font-size: 26px;
-    }
-
-
-    .file {
-        padding: 14px;
-
-        min-height: 82px;
-    }
-
-
-    .file-info strong {
-        font-size: 10px;
-    }
-
-
-    .glitch {
-        font-size: 36px;
-    }
-
-
-    .transmission-description {
-        font-size: 10px;
-    }
-
-
-    .analysis-header h1 {
-        font-size: 23px;
-    }
-
-
-    .analysis-text {
         font-size: 9px;
     }
 
 
-    .analysis-bar-container {
-        padding: 9px;
+    /* =====================================================
+       TRANSMISSION
+    ===================================================== */
+
+    #transmissionScreen {
+        padding-top: 15px;
+    }
+
+    .transmission {
+        width: 100%;
+    }
+
+    .signal-icon {
+        width: 58px;
+        height: 58px;
+
+        margin-bottom: 18px;
+    }
+
+    .signal-icon span {
+        width: 3px;
+    }
+
+    .signal-icon span:nth-child(1) {
+        height: 12px;
+    }
+
+    .signal-icon span:nth-child(2) {
+        height: 24px;
+    }
+
+    .signal-icon span:nth-child(3) {
+        height: 36px;
+    }
+
+    .small-text {
+        font-size: 8px;
+
+        letter-spacing: 2px;
+    }
+
+    .glitch {
+        margin-top: 12px;
+
+        font-size: clamp(32px, 12vw, 45px);
+
+        line-height: 1;
+
+        letter-spacing: 1px;
+
+        overflow-wrap: anywhere;
+    }
+
+    .transmission-description {
+        margin-top: 12px;
+
+        font-size: 10px;
+
+        line-height: 1.6;
+    }
+
+    .signal-bars {
+        margin-top: 20px;
+
+        height: 30px;
     }
 
 
-    .result-final strong {
+    /* =====================================================
+       ARCHIVE
+    ===================================================== */
+
+    #archiveScreen {
+        padding-top: 15px;
+    }
+
+    .archive {
+        width: 100%;
+    }
+
+    .archive-header {
+        margin-bottom: 18px;
+    }
+
+    .archive-code {
+        font-size: 8px;
+
+        letter-spacing: 1.5px;
+    }
+
+    .archive-header h1 {
+        margin-top: 6px;
+
+        font-size: 26px;
+
+        line-height: 1.15;
+    }
+
+    .archive-header p {
+        margin-top: 7px;
+
+        font-size: 10px;
+
+        line-height: 1.5;
+    }
+
+    .files-grid {
+        grid-template-columns: 1fr;
+
+        gap: 9px;
+    }
+
+    .file {
+        min-height: 76px;
+
+        padding: 12px;
+
+        gap: 11px;
+
+        border-radius: 8px;
+    }
+
+    .file-icon,
+    .location-icon {
+        width: 38px;
+        height: 38px;
+
+        border-radius: 7px;
+
+        font-size: 16px;
+    }
+
+    .file-info strong {
+        font-size: 9px;
+
+        line-height: 1.4;
+    }
+
+    .file-info span {
+        margin-top: 3px;
+
+        font-size: 7px;
+
+        line-height: 1.4;
+    }
+
+    .file-arrow {
         font-size: 17px;
     }
 
+    .archive-footer {
+        margin-top: 15px;
+
+        font-size: 7px;
+
+        line-height: 1.5;
+    }
+
+
+    /* =====================================================
+       ANALYSIS
+    ===================================================== */
+
+    #analysisScreen {
+        padding-top: 15px;
+        padding-bottom: 40px;
+    }
+
+    .analysis {
+        width: 100%;
+    }
+
+    .analysis-header {
+        margin-bottom: 15px;
+    }
+
+    .analysis-status {
+        font-size: 8px;
+
+        letter-spacing: 1.5px;
+
+        margin-bottom: 6px;
+    }
+
+    .analysis-header h1 {
+        font-size: 23px;
+
+        line-height: 1.2;
+
+        overflow-wrap: anywhere;
+    }
+
+    .analysis-header p {
+        margin-top: 5px;
+
+        font-size: 8px;
+
+        line-height: 1.5;
+    }
+
+    .analysis-text {
+        gap: 5px;
+
+        font-size: 8px;
+
+        line-height: 1.6;
+
+        overflow-wrap: anywhere;
+    }
+
+    .analysis-line.highlight {
+        margin-top: 5px;
+    }
+
+    .analysis-bar-container {
+        margin: 6px 0 10px;
+
+        padding: 8px;
+    }
+
+    .analysis-bar-title {
+        margin-bottom: 6px;
+
+        font-size: 8px;
+    }
+
+    .real-analysis-bar {
+        height: 5px;
+    }
+
+    .analysis-result {
+        margin-top: 15px;
+
+        padding-top: 14px;
+    }
+
+    .result-line {
+        font-size: 8px;
+
+        line-height: 1.8;
+    }
+
+    .result-final {
+        margin-top: 12px;
+
+        font-size: 9px;
+
+        line-height: 1.6;
+    }
+
+    .result-final strong {
+        margin-top: 5px;
+
+        font-size: 16px;
+    }
+
+
+    /* =====================================================
+       FINAL
+    ===================================================== */
+
+    #finalScreen {
+        padding-top: 18px;
+        padding-bottom: 45px;
+    }
+
+    .final {
+        width: 100%;
+    }
+
+    .final-classified {
+        font-size: 7px;
+
+        letter-spacing: 2.5px;
+    }
 
     .final-date {
-        font-size: 40px;
+        margin-top: 12px;
+
+        font-size: clamp(38px, 12vw, 65px);
+
+        line-height: 1;
 
         letter-spacing: -1px;
-    }
 
+        overflow-wrap: anywhere;
+    }
 
     .final-time {
-        font-size: 15px;
+        margin-top: 7px;
+
+        font-size: 14px;
+
+        letter-spacing: 1px;
     }
 
+    .final-location {
+        margin-top: 7px;
 
-    .birthday-message {
-        font-size: 22px;
+        font-size: 8px;
+
+        letter-spacing: 1px;
+
+        line-height: 1.5;
     }
 
+    .final-message {
+        margin-top: 28px;
+
+        font-size: 10px;
+
+        line-height: 1.7;
+    }
+
+    .location-button {
+        width: 100%;
+
+        margin-top: 16px;
+
+        padding: 14px 18px;
+
+        font-size: 9px;
+    }
+
+    .location-reveal.show {
+        max-height: 180px;
+
+        margin-top: 16px;
+    }
+
+    .location-pin {
+        font-size: 30px;
+    }
+
+    .location-reveal span {
+        font-size: 7px;
+
+        line-height: 1.5;
+    }
 
     .location-reveal strong {
-        font-size: 19px;
+        margin-top: 6px;
+
+        font-size: 18px;
+
+        line-height: 1.3;
     }
 
 
+    /* =====================================================
+       MISSION
+    ===================================================== */
+
+    .mission-text {
+        font-size: 8px;
+
+        line-height: 1.8;
+    }
+
+    .mission-text.show {
+        max-height: 500px;
+
+        margin-top: 22px;
+    }
+
+    .birthday-message {
+        margin-top: 20px;
+
+        font-size: 21px;
+
+        line-height: 1.25;
+    }
+
+    .confirmation-question {
+        margin-top: 20px;
+
+        font-size: 9px;
+
+        line-height: 1.5;
+    }
+
+    .yes-button {
+        width: 100%;
+
+        margin-top: 13px;
+
+        padding: 15px 20px;
+
+        font-size: 9px;
+    }
+
+
+    /* =====================================================
+       CONFIRMACION
+    ===================================================== */
+
+    #confirmationScreen {
+        padding-top: 18px;
+        padding-bottom: 40px;
+    }
+
+    .confirmation {
+        width: 100%;
+    }
+
+    .confirmation-icon {
+        width: 65px;
+        height: 65px;
+
+        margin-bottom: 15px;
+
+        font-size: 30px;
+    }
+
+    .confirmation-small {
+        font-size: 7px;
+
+        letter-spacing: 2px;
+    }
+
+    .confirmation h1 {
+        margin-top: 9px;
+
+        font-size: 31px;
+
+        line-height: 1.15;
+    }
+
+    .confirmation>p {
+        margin-top: 10px;
+
+        font-size: 9px;
+
+        line-height: 1.7;
+    }
+
+    .confirmation-data {
+        margin-top: 20px;
+
+        grid-template-columns: 1fr;
+
+        gap: 7px;
+    }
+
+    .confirmation-data div {
+        padding: 13px;
+    }
+
+    .confirmation-data span {
+        font-size: 7px;
+    }
+
+    .confirmation-data strong {
+        margin-top: 5px;
+
+        font-size: 9px;
+    }
+
+    .confirmation-footer {
+        margin-top: 20px;
+
+        font-size: 8px;
+
+        line-height: 1.5;
+    }
+
+
+    /* =====================================================
+       MODAL
+    ===================================================== */
+
+    .modal {
+        padding: 10px;
+    }
+
+    .modal-window {
+        width: 100%;
+
+        max-height: 92dvh;
+
+        border-radius: 9px;
+    }
+
+    .modal-header {
+        height: 42px;
+
+        padding: 0 12px;
+
+        font-size: 8px;
+    }
+
+    .modal-header button {
+        font-size: 22px;
+
+        padding: 5px;
+    }
+
     .modal-content {
-        padding: 20px;
+        padding: 17px;
+
+        font-size: 9px;
+
+        line-height: 1.8;
+    }
+
+    .modal-content h3 {
+        margin-bottom: 9px;
+
+        font-size: 16px;
+    }
+
+    .modal-content-title {
+        margin-bottom: 15px;
+
+        font-size: 8px;
+
+        letter-spacing: 1.5px;
+    }
+
+    .location-modal-box {
+        margin: 15px 0;
+
+        padding: 17px;
+    }
+
+    .location-modal-box span {
+        font-size: 32px;
+    }
+
+    .location-modal-box strong {
+        font-size: 18px;
     }
 }
 
 
 /* =========================================================
-   SCROLLBAR
+   CELULARES MUY PEQUEÑOS
 ========================================================= */
 
-::-webkit-scrollbar {
-    width: 7px;
+@media (max-width: 380px) {
+
+    .screen {
+        padding-left: 9px;
+        padding-right: 9px;
+        padding-bottom: 30px;
+    }
+
+    #terminalScreen,
+    #transmissionScreen,
+    #archiveScreen,
+    #analysisScreen,
+    #finalScreen,
+    #confirmationScreen {
+        padding-top: 10px;
+    }
+
+    .terminal-body {
+        padding: 23px 13px 20px;
+    }
+
+    .terminal-heading {
+        font-size: 21px;
+    }
+
+    .terminal-lines {
+        font-size: 8px;
+
+        line-height: 1.7;
+    }
+
+    .glitch {
+        font-size: 31px;
+    }
+
+    .archive-header h1 {
+        font-size: 23px;
+    }
+
+    .file {
+        min-height: 70px;
+
+        padding: 10px;
+    }
+
+    .file-icon,
+    .location-icon {
+        width: 34px;
+        height: 34px;
+
+        font-size: 14px;
+    }
+
+    .file-info strong {
+        font-size: 8px;
+    }
+
+    .file-info span {
+        font-size: 6.5px;
+    }
+
+    .analysis-header h1 {
+        font-size: 21px;
+    }
+
+    .analysis-text {
+        font-size: 7.5px;
+    }
+
+    .final-date {
+        font-size: 36px;
+    }
+
+    .birthday-message {
+        font-size: 19px;
+    }
+
+    .confirmation h1 {
+        font-size: 27px;
+    }
 }
 
-::-webkit-scrollbar-track {
-    background: #050509;
+
+/* =========================================================
+   DISPOSITIVOS CON POCA ALTURA
+   EVITA ESPACIOS VERTICALES GIGANTES
+========================================================= */
+
+@media (max-height: 650px) and (max-width: 700px) {
+
+    .screen {
+        padding-top: 8px !important;
+        padding-bottom: 25px;
+    }
+
+    #terminalScreen,
+    #transmissionScreen,
+    #archiveScreen,
+    #analysisScreen,
+    #finalScreen,
+    #confirmationScreen {
+        padding-top: 8px !important;
+    }
+
+    .terminal-body {
+        padding-top: 20px;
+        padding-bottom: 18px;
+    }
+
+    .terminal-logo {
+        width: 50px;
+        height: 50px;
+
+        margin-bottom: 10px;
+    }
+
+    .terminal-lines {
+        margin-top: 15px;
+    }
+
+    .final-message {
+        margin-top: 20px;
+    }
+
+    .confirmation-data {
+        margin-top: 15px;
+    }
 }
 
-::-webkit-scrollbar-thumb {
-    background: #25232f;
 
-    border-radius: 10px;
-}
+/* =========================================================
+   TOUCH / CELULAR
+========================================================= */
 
-::-webkit-scrollbar-thumb:hover {
-    background: #403a52;
+@media (hover: none) and (pointer: coarse) {
+
+    .file:hover,
+    .main-button:hover,
+    .location-button:hover,
+    .yes-button:hover {
+        transform: none;
+
+        box-shadow: none;
+    }
+
+    .file:active,
+    .main-button:active,
+    .location-button:active,
+    .yes-button:active {
+        transform: scale(0.98);
+    }
+
+    button,
+    .file {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
 }
