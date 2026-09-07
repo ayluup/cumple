@@ -1,443 +1,895 @@
-/* =========================================
-   EXPEDIENTE 26
-   EVU & AYLU
-========================================= */
+/* =========================================================
+   ELEMENTOS
+========================================================= */
+
+const terminalScreen =
+    document.getElementById("terminalScreen");
+
+const transmissionScreen =
+    document.getElementById("transmissionScreen");
+
+const archiveScreen =
+    document.getElementById("archiveScreen");
+
+const analysisScreen =
+    document.getElementById("analysisScreen");
+
+const finalScreen =
+    document.getElementById("finalScreen");
+
+const confirmationScreen =
+    document.getElementById("confirmationScreen");
 
 
-/* =========================================
-   CURSOR
-========================================= */
+const startButton =
+    document.getElementById("startButton");
 
-const cursor = document.querySelector(".cursor");
+const accessButton =
+    document.getElementById("accessButton");
 
-document.addEventListener("mousemove", (e) => {
+const continueButton =
+    document.getElementById("continueButton");
 
-    if (!cursor) return;
+const locationButton =
+    document.getElementById("locationButton");
 
-    cursor.style.left = `${e.clientX}px`;
-    cursor.style.top = `${e.clientY}px`;
-
-});
-
-
-const elementosInteractivos = document.querySelectorAll(
-    "button, .foto-marco"
-);
+const yesButton =
+    document.getElementById("yesButton");
 
 
-elementosInteractivos.forEach((elemento) => {
+const terminalLines =
+    document.getElementById("terminalLines");
 
-    elemento.addEventListener("mouseenter", () => {
+const progress =
+    document.getElementById("progress");
 
-        cursor?.classList.add("grande");
-
-    });
-
-
-    elemento.addEventListener("mouseleave", () => {
-
-        cursor?.classList.remove("grande");
-
-    });
-
-});
+const percentage =
+    document.getElementById("percentage");
 
 
-/* =========================================
-   ABRIR ARCHIVO
-========================================= */
+const fileModal =
+    document.getElementById("fileModal");
 
-const abrirBtn = document.getElementById("abrirBtn");
+const modalContent =
+    document.getElementById("modalContent");
 
-const inicio = document.getElementById("inicio");
-
-const contenido = document.getElementById("contenido");
-
-
-abrirBtn.addEventListener("click", () => {
-
-    abrirBtn.innerHTML = "<span>DESCIFRANDO...</span>";
-
-    setTimeout(() => {
-
-        inicio.style.transition = "1s";
-        inicio.style.opacity = "0";
-        inicio.style.transform = "scale(1.05)";
-
-    }, 700);
+const closeModal =
+    document.getElementById("closeModal");
 
 
-    setTimeout(() => {
+const analysisText =
+    document.getElementById("analysisText");
 
-        inicio.style.display = "none";
+const analysisResult =
+    document.getElementById("analysisResult");
 
-        contenido.classList.remove("oculto");
 
-        iniciarAnimaciones();
+const locationReveal =
+    document.getElementById("locationReveal");
 
-        window.scrollTo({
-            top: 0,
-            behavior: "instant"
+const missionText =
+    document.getElementById("missionText");
+
+
+
+/* =========================================================
+   CAMBIAR PANTALLAS
+========================================================= */
+
+function showScreen(screen) {
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(section => {
+            section.classList.remove("active");
         });
 
-    }, 1600);
+    screen.classList.add("active");
 
-});
-
-
-/* =========================================
-   ANIMACIONES AL HACER SCROLL
-========================================= */
-
-function iniciarAnimaciones() {
-
-    const elementos = document.querySelectorAll(
-        ".seccion > div:not(.numero), .dato, .botones-descubrir button"
-    );
-
-
-    elementos.forEach((elemento) => {
-
-        elemento.classList.add("reveal");
-
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
     });
+}
 
 
-    const observer = new IntersectionObserver(
-        (entries) => {
 
-            entries.forEach((entry) => {
+/* =========================================================
+   PARTICULAS
+========================================================= */
 
-                if (entry.isIntersecting) {
-
-                    entry.target.classList.add("visible");
-
-                }
-
-            });
-
-        },
-        {
-            threshold: .15
-        }
-    );
+const particlesContainer =
+    document.querySelector(".particles");
 
 
-    elementos.forEach((elemento) => {
+for (let i = 0; i < 45; i++) {
 
-        observer.observe(elemento);
+    const particle =
+        document.createElement("div");
 
-    });
+    particle.className = "particle";
+
+    particle.style.left =
+        Math.random() * 100 + "%";
+
+    particle.style.animationDuration =
+        (8 + Math.random() * 15) + "s";
+
+    particle.style.animationDelay =
+        Math.random() * 10 + "s";
+
+    particle.style.opacity =
+        0.15 + Math.random() * 0.5;
+
+    particlesContainer.appendChild(particle);
+}
+
+
+
+/* =========================================================
+   TERMINAL BOOT
+========================================================= */
+
+const bootMessages = [
+
+    {
+        text: "[BOOT] Inicializando BIRTHDAY_OS...",
+        type: ""
+    },
+
+    {
+        text: "[OK] Sistema iniciado.",
+        type: "ok"
+    },
+
+    {
+        text: "[SCAN] Buscando evento especial...",
+        type: ""
+    },
+
+    {
+        text: "[SCAN] Evento encontrado.",
+        type: ""
+    },
+
+    {
+        text: "[INFO] Nivel de importancia: EXTREMO",
+        type: "info"
+    },
+
+    {
+        text: "[INFO] Motivo: cumpleaños detectado.",
+        type: "info"
+    },
+
+    {
+        text: "[SECURITY] Verificando invitación...",
+        type: ""
+    },
+
+    {
+        text: "[OK] Invitación autorizada.",
+        type: "ok"
+    },
+
+    {
+        text: "> Esperando interacción del usuario...",
+        type: ""
+    }
+
+];
+
+
+let bootIndex = 0;
+
+let progressValue = 0;
+
+
+function runBoot() {
+
+    if (bootIndex < bootMessages.length) {
+
+        const line =
+            document.createElement("div");
+
+        line.className =
+            "terminal-line " +
+            bootMessages[bootIndex].type;
+
+        line.textContent =
+            bootMessages[bootIndex].text;
+
+        terminalLines.appendChild(line);
+
+        bootIndex++;
+
+        setTimeout(runBoot, 450);
+
+    }
 
 }
 
 
-/* =========================================
-   ARCHIVOS INTERACTIVOS
-========================================= */
 
-const archivos = {
+const progressInterval =
+    setInterval(() => {
 
-    comida: {
+        progressValue += Math.random() * 4;
 
-        numero: "01",
+        if (progressValue >= 100) {
 
-        texto:
-            "Obviamente no podía faltar comida. Y sí, probablemente vas a repetir."
+            progressValue = 100;
+
+            clearInterval(progressInterval);
+
+            startButton.disabled = false;
+
+            startButton.textContent =
+                "INICIAR SISTEMA →";
+
+        }
+
+        progress.style.width =
+            progressValue + "%";
+
+        percentage.textContent =
+            Math.floor(progressValue) + "%";
+
+    }, 120);
+
+
+runBoot();
+
+
+
+/* =========================================================
+   BOTON INICIAR
+========================================================= */
+
+startButton.addEventListener("click", () => {
+
+    showScreen(transmissionScreen);
+
+});
+
+
+
+/* =========================================================
+   TRANSMISION
+========================================================= */
+
+accessButton.addEventListener("click", () => {
+
+    showScreen(archiveScreen);
+
+});
+
+
+
+/* =========================================================
+   ARCHIVOS
+========================================================= */
+
+const fileData = {
+
+    evento: {
+
+        content: `
+
+            <div class="modal-content-title">
+                EVENT_SYSTEM // DATA
+            </div>
+
+            <h3>EVENTO</h3>
+
+            <p>
+                Se ha detectado un evento especial
+                en el sistema.
+            </p>
+
+            <br>
+
+            <p>
+                Tipo:
+                <strong>CUMPLEAÑOS</strong>
+            </p>
+
+            <p>
+                Nivel:
+                <strong>INOVIDABLE </strong>
+            </p>
+
+            <p>
+                Estado:
+                <strong>ACTIVO ✓</strong>
+            </p>
+
+        `
 
     },
 
-    musica: {
 
-        numero: "02",
+    ubicacion: {
 
-        texto:
-            "Prepará tus mejores pasos. La música va a ser parte importante del expediente."
+        content: `
 
-    },
+            <div class="modal-content-title">
+                LOCATION_SYSTEM // ACCESS
+            </div>
 
-    fotos: {
+            <h3>📍 UBICACIÓN</h3>
 
-        numero: "03",
+            <p>
+                La ubicación ha sido desbloqueada.
+            </p>
 
-        texto:
-            "Porque algunas noches merecen quedar registradas para siempre."
+            <div class="location-modal-box">
+                <strong>
+                   <a href="https://maps.app.goo.gl/8ByVy2pudiYjXPne9" target="_blank"  style="text-decoration: none; color: #ffffff;">
+                        EN MI CASA (Toca para abrir en Google Maps)
+                   </a>
+                </strong>
 
-    },
+            </div>
 
-    baile: {
+            <p>
+                Te esperamos el
+                <strong>26 de septiembre</strong>.
+            </p>
 
-        numero: "04",
-
-        texto:
-            "No aceptamos excusas. El que viene, baila."
-
-    },
-
-    sorpresa: {
-
-        numero: "05",
-
-        texto:
-            "Hay cosas que no se pueden revelar antes de tiempo..."
+        `
 
     },
 
-    final: {
 
-        numero: "06",
+    horario: {
 
-        texto:
-            "Si llegaste hasta acá, ya tenés suficiente información. O eso creemos."
+        content: `
+
+            <div class="modal-content-title">
+                TIME_SYSTEM // DATA
+            </div>
+
+            <h3>⏰ HORARIO</h3>
+
+            <p>
+                Fecha:
+                <strong>26 DE SEPTIEMBRE</strong>
+            </p>
+
+            <p>
+                Inicio:
+                <strong>11:00</strong>
+            </p>
+
+            <p>
+                Fin:
+                <strong>16:00</strong>
+            </p>
+
+            <br>
+
+            <p>
+                Duración estimada:
+                <strong>5 HORAS</strong>
+            </p>
+
+        `
 
     }
 
 };
 
 
-const botones = document.querySelectorAll(
-    ".botones-descubrir button"
-);
+
+document
+    .querySelectorAll(".file")
+    .forEach(file => {
+
+        file.addEventListener("click", () => {
+
+            const type =
+                file.dataset.file;
 
 
-const respuestaNumero =
-    document.getElementById("respuestaNumero");
+            if (type === "secreto") {
+
+                startGuestAnalysis();
+
+                return;
+
+            }
 
 
-const respuestaTexto =
-    document.getElementById("respuestaTexto");
+            if (fileData[type]) {
 
+                modalContent.innerHTML =
+                    fileData[type].content;
 
-botones.forEach((boton) => {
+                fileModal.classList.add("open");
 
-    boton.addEventListener("click", () => {
-
-        const tipo = boton.dataset.info;
-
-        const archivo = archivos[tipo];
-
-        if (!archivo) return;
-
-
-        botones.forEach((b) => {
-
-            b.classList.remove("activo");
+            }
 
         });
 
-
-        boton.classList.add("activo");
-
-
-        respuestaNumero.textContent =
-            archivo.numero;
+    });
 
 
-        respuestaTexto.style.opacity = "0";
 
+/* =========================================================
+   CERRAR MODAL
+========================================================= */
+
+closeModal.addEventListener("click", () => {
+
+    fileModal.classList.remove("open");
+
+});
+
+
+fileModal.addEventListener("click", event => {
+
+    if (event.target === fileModal) {
+
+        fileModal.classList.remove("open");
+
+    }
+
+});
+
+
+document.addEventListener("keydown", event => {
+
+    if (event.key === "Escape") {
+
+        fileModal.classList.remove("open");
+
+    }
+
+});
+
+
+
+/* =========================================================
+   ANALISIS
+========================================================= */
+
+function escribirLinea(
+    texto,
+    clase = "",
+    delay = 0
+) {
+
+    return new Promise(resolve => {
 
         setTimeout(() => {
 
-            respuestaTexto.textContent =
-                archivo.texto;
+            const line =
+                document.createElement("div");
 
-            respuestaTexto.style.opacity = "1";
+            line.className =
+                "analysis-line " + clase;
 
-        }, 200);
+            line.textContent =
+                texto;
+
+            analysisText.appendChild(line);
+
+            resolve();
+
+        }, delay);
 
     });
 
-});
-
-
-/* =========================================
-   CUENTA REGRESIVA
-========================================= */
-
-const fechaObjetivo =
-    new Date("September 26, 2026 11:00:00").getTime();
-
-
-function actualizarCountdown() {
-
-    const ahora = new Date().getTime();
-
-    const diferencia =
-        fechaObjetivo - ahora;
-
-
-    if (diferencia <= 0) {
-
-        document.getElementById("dias").textContent = "00";
-        document.getElementById("horas").textContent = "00";
-        document.getElementById("minutos").textContent = "00";
-        document.getElementById("segundos").textContent = "00";
-
-        return;
-
-    }
-
-
-    const dias =
-        Math.floor(
-            diferencia / (1000 * 60 * 60 * 24)
-        );
-
-
-    const horas =
-        Math.floor(
-            (diferencia / (1000 * 60 * 60)) % 24
-        );
-
-
-    const minutos =
-        Math.floor(
-            (diferencia / (1000 * 60)) % 60
-        );
-
-
-    const segundos =
-        Math.floor(
-            (diferencia / 1000) % 60
-        );
-
-
-    document.getElementById("dias").textContent =
-        String(dias).padStart(2, "0");
-
-
-    document.getElementById("horas").textContent =
-        String(horas).padStart(2, "0");
-
-
-    document.getElementById("minutos").textContent =
-        String(minutos).padStart(2, "0");
-
-
-    document.getElementById("segundos").textContent =
-        String(segundos).padStart(2, "0");
-
 }
 
 
-actualizarCountdown();
 
+function barraAnalisis(
+    nombre,
+    porcentajeFinal,
+    duracion = 1500
+) {
 
-setInterval(actualizarCountdown, 1000);
+    return new Promise(resolve => {
 
-
-/* =========================================
-   FOTO
-========================================= */
-
-const fotoMarco =
-    document.getElementById("fotoMarco");
-
-
-fotoMarco.addEventListener("click", () => {
-
-    fotoMarco.classList.toggle("revelada");
-
-});
-
-
-/* =========================================
-   BOTÓN FINAL
-========================================= */
-
-const venirBtn =
-    document.getElementById("venirBtn");
-
-
-const finalPantalla =
-    document.getElementById("finalPantalla");
-
-
-const particulas =
-    document.querySelector(".particulas");
-
-
-venirBtn.addEventListener("click", () => {
-
-    finalPantalla.classList.add("mostrar");
-
-    crearParticulas();
-
-});
-
-
-/* =========================================
-   PARTICULAS
-========================================= */
-
-function crearParticulas() {
-
-    particulas.innerHTML = "";
-
-
-    for (let i = 0; i < 100; i++) {
-
-        const particula =
+        const container =
             document.createElement("div");
 
-
-        particula.classList.add("particula");
-
-
-        particula.style.left =
-            Math.random() * 100 + "%";
+        container.className =
+            "analysis-bar-container";
 
 
-        particula.style.setProperty(
-            "--x",
-            `${(Math.random() - .5) * 300}px`
-        );
+        const title =
+            document.createElement("div");
+
+        title.className =
+            "analysis-bar-title";
 
 
-        particula.style.animationDelay =
-            Math.random() * 2 + "s";
+        const label =
+            document.createElement("span");
+
+        label.textContent =
+            nombre;
 
 
-        particula.style.animationDuration =
-            2 + Math.random() * 3 + "s";
+        const value =
+            document.createElement("span");
+
+        value.textContent =
+            "0%";
 
 
-        particulas.appendChild(particula);
+        title.appendChild(label);
 
-    }
+        title.appendChild(value);
+
+
+        const bar =
+            document.createElement("div");
+
+        bar.className =
+            "real-analysis-bar";
+
+
+        const fill =
+            document.createElement("div");
+
+        fill.className =
+            "real-analysis-fill";
+
+
+        bar.appendChild(fill);
+
+        container.appendChild(title);
+
+        container.appendChild(bar);
+
+        analysisText.appendChild(container);
+
+
+        let current = 0;
+
+        const startTime = performance.now();
+
+
+        function animate(time) {
+
+            const elapsed =
+                time - startTime;
+
+            const progressValue =
+                Math.min(
+                    elapsed / duracion,
+                    1
+                );
+
+
+            current =
+                Math.floor(
+                    progressValue *
+                    porcentajeFinal
+                );
+
+
+            fill.style.width =
+                current + "%";
+
+            value.textContent =
+                current + "%";
+
+
+            if (progressValue < 1) {
+
+                requestAnimationFrame(animate);
+
+            } else {
+
+                current =
+                    porcentajeFinal;
+
+                fill.style.width =
+                    current + "%";
+
+                value.textContent =
+                    current + "%";
+
+                resolve();
+
+            }
+
+        }
+
+
+        requestAnimationFrame(animate);
+
+    });
 
 }
 
 
-/* =========================================
-   EFECTO PARALLAX SUAVE
-========================================= */
 
-document.addEventListener("mousemove", (e) => {
+/* =========================================================
+   EJECUTAR ANALISIS
+========================================================= */
 
-    const x =
-        (e.clientX / window.innerWidth - .5);
+async function startGuestAnalysis() {
 
-
-    const y =
-        (e.clientY / window.innerHeight - .5);
+    showScreen(analysisScreen);
 
 
-    const archivo =
-        document.querySelector(".archivo");
+    analysisText.innerHTML = "";
+
+    analysisResult.classList.remove("visible");
 
 
-    if (
-        archivo &&
-        inicio &&
-        inicio.style.display !== "none"
-    ) {
+    await escribirLinea(
+        "> GUEST_ANALYSIS.EXE",
+        "highlight"
+    );
 
-        archivo.style.transform =
-            `perspective(1000px)
-             rotateY(${x * 2}deg)
-             rotateX(${y * -2}deg)`;
 
-    }
+    await escribirLinea(
+        "> Inicializando protocolo de análisis..."
+    );
+
+
+    await escribirLinea(
+        "[SYSTEM] Conexión establecida ✓",
+        "green"
+    );
+
+
+    await escribirLinea(
+        ""
+    );
+
+
+    await escribirLinea(
+        "INICIANDO ESCANEO DEL INVITADO...",
+        "highlight"
+    );
+
+
+    await escribirLinea(
+        "> Buscando información relevante..."
+    );
+
+
+    await escribirLinea(
+        "> Analizando comportamiento..."
+    );
+
+
+    await escribirLinea(
+        "> Comparando datos..."
+    );
+
+
+    await escribirLinea(
+        ""
+    );
+
+
+    await escribirLinea(
+        "ANALIZANDO NIVEL DE AMISTAD...",
+        "highlight"
+    );
+
+
+    await barraAnalisis(
+        "Nivel de amistad",
+        100,
+        1200
+    );
+
+
+    await escribirLinea(
+        "Nivel de amistad 100% ✓",
+        "green"
+    );
+
+
+    await escribirLinea(
+        ""
+    );
+
+
+    await escribirLinea(
+        "CALCULANDO PROBABILIDAD DE ASISTENCIA...",
+        "highlight"
+    );
+
+
+    await barraAnalisis(
+        "Probabilidad de venir",
+        94,
+        1400
+    );
+
+
+    await escribirLinea(
+        "Probabilidad de venir 94%",
+        "green"
+    );
+
+
+    await escribirLinea(
+        ""
+    );
+
+
+    await escribirLinea(
+        "EVALUANDO CAPACIDAD GASTRONÓMICA...",
+        "highlight"
+    );
+
+
+    await barraAnalisis(
+        "Capacidad para comer torta",
+        100,
+        1200
+    );
+
+
+    await escribirLinea(
+        "Capacidad para comer torta 100%",
+        "green"
+    );
+
+
+    await escribirLinea(
+        ""
+    );
+
+
+    await escribirLinea(
+        "EVALUANDO NIVEL DE QUILOMBO...",
+        "highlight"
+    );
+
+
+    await barraAnalisis(
+        "Capacidad para hacer quilombo",
+        100,
+        1200
+    );
+
+
+    await escribirLinea(
+        "Capacidad para hacer quilombo 100%",
+        "pink"
+    );
+
+
+    await escribirLinea(
+        ""
+    );
+
+
+    await escribirLinea(
+        "> VERIFICANDO RESULTADOS..."
+    );
+
+
+    await escribirLinea(
+        "> Todos los parámetros fueron procesados."
+    );
+
+
+    await escribirLinea(
+        "> Generando decisión final..."
+    );
+
+
+    await new Promise(resolve =>
+        setTimeout(resolve, 600)
+    );
+
+
+    analysisResult.classList.add("visible");
+
+}
+
+
+
+/* =========================================================
+   CONTINUAR
+========================================================= */
+
+continueButton.addEventListener("click", () => {
+
+    showScreen(finalScreen);
+
+    startFinalSequence();
 
 });
+
+
+
+/* =========================================================
+   SECUENCIA FINAL
+========================================================= */
+
+function startFinalSequence() {
+
+    locationReveal.classList.remove("show");
+
+    missionText.classList.remove("show");
+
+    setTimeout(() => {
+
+        document.getElementById(
+            "finalMessage"
+        ).style.opacity = "1";
+
+    }, 300);
+
+}
+
+
+
+/* =========================================================
+   UBICACION
+========================================================= */
+
+locationButton.addEventListener("click", () => {
+
+    locationButton.style.display = "none";
+
+    locationReveal.classList.add("show");
+
+
+    setTimeout(() => {
+
+        missionText.classList.add("show");
+
+    }, 1000);
+
+});
+
+
+
+/* =========================================================
+   CONFIRMACION WHATSAPP
+========================================================= */
+
+yesButton.addEventListener("click", () => {
+
+    createConfetti();
+
+
+    setTimeout(() => {
+
+        showScreen(confirmationScreen);
+
+    }, 900);
+
+
+    setTimeout(() => {
+
+        const phone =
+            "5492944602390";
+
+
+        const message =
+            "¡Sí, voy al cumpleaños! Nos vemos el 26 de septiembre.";
+
+
+        const whatsappUrl =
+            "https://wa.me/2944602390" +
+            phone +
+            "?text=" +
+            encodeURIComponent(message);
+
+
+        window.open(
+            whatsappUrl,
+            "_blank"
+        );
+
+    }, 1200);
+
+});
+

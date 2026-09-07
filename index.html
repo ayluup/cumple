@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Expediente 26 | Evu & Aylu</title>
+    <title>BIRTHDAY_OS // CLASSIFIED</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
@@ -18,52 +19,76 @@
 
 <body>
 
-    <!-- CURSOR -->
-    <div class="cursor"></div>
+    <!-- =====================================================
+         PARTICULAS
+    ====================================================== -->
 
-    <!-- PANTALLA INICIAL -->
-    <section id="inicio" class="pantalla-inicial">
+    <div class="particles"></div>
 
-        <div class="ruido"></div>
 
-        <div class="scan-line"></div>
+    <!-- =====================================================
+         PANTALLA 1 - TERMINAL
+    ====================================================== -->
 
-        <div class="archivo">
+    <section id="terminalScreen" class="screen active">
 
-            <div class="top-info">
-                <span>ARCHIVO Nº 026</span>
-                <span>CLASIFICADO</span>
+        <div class="terminal">
+
+            <div class="terminal-top">
+
+                <div class="terminal-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="terminal-title">
+                    ESTÁS INVITADO A NUESTRO CUMPLEAÑOS
+                </div>
+
+                <div class="terminal-status">
+                    ONLINE
+                </div>
+
             </div>
 
-            <div class="archivo-centro">
 
-                <p class="mini-titulo">
-                    DOCUMENTO CONFIDENCIAL
-                </p>
+            <div class="terminal-body">
 
-                <h1>
-                    EVU
-                    <span>&</span>
-                    AYLU
-                </h1>
+                <div class="terminal-logo">
+                    <span>&gt;_</span>
+                </div>
 
-                <div class="linea"></div>
+                <div class="terminal-heading">
+                    CUMPLEAÑOS DE EVU & AYLU
+                </div>
 
-                <p>
-                    Se ha encontrado un evento<br>
-                    que requiere su presencia.
-                </p>
+                <div class="terminal-subtitle">
+                    SPECIAL EVENT PROTOCOL
+                </div>
 
-                <button id="abrirBtn">
-                    <span>ABRIR ARCHIVO</span>
-                    <b>→</b>
+
+                <div id="terminalLines" class="terminal-lines"></div>
+
+
+                <div class="progress-area">
+
+                    <div class="progress-info">
+                        <span>SYSTEM LOADING</span>
+                        <span id="percentage">0%</span>
+                    </div>
+
+                    <div class="progress-track">
+                        <div id="progress"></div>
+                    </div>
+
+                </div>
+
+
+                <button id="startButton" class="main-button" disabled>
+                    INICIAR SISTEMA 
                 </button>
 
-            </div>
-
-            <div class="bottom-info">
-                <span>STATUS: EN ESPERA</span>
-                <span>24.09.2026</span>
             </div>
 
         </div>
@@ -71,379 +96,403 @@
     </section>
 
 
-    <!-- CONTENIDO PRINCIPAL -->
 
-    <main id="contenido" class="oculto">
+    <!-- =====================================================
+         PANTALLA 2 - TRANSMISION
+    ====================================================== -->
 
-        <!-- INTRO -->
-        <section class="seccion intro">
+    <section id="transmissionScreen" class="screen">
 
-            <div class="numero">
-                01 / 06
+        <div class="transmission">
+
+            <div class="signal-icon">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
 
-            <div class="contenido-intro">
-
-                <p class="etiqueta">
-                    ARCHIVO ABIERTO
-                </p>
-
-                <h2>
-                    Tenemos<br>
-                    <i>algo</i> que celebrar.
-                </h2>
-
-                <div class="scroll">
-                    ↓ SCROLL PARA CONTINUAR
-                </div>
-
+            <div class="small-text">
+                TRANSMISSION INCOMING...
             </div>
 
-        </section>
+            <h1 class="glitch" data-text="¿ESTÁS LISTO?">
+                ¿ESTÁS LISTO?
+            </h1>
 
+            <p class="transmission-description">
+                Se ha detectado una transmisión especial.
+            </p>
 
-        <!-- FECHA -->
-        <section class="seccion fecha">
-
-            <div class="numero">
-                02 / 06
+            <div class="signal-bars">
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
             </div>
 
-            <div class="fecha-contenido">
+            <button id="accessButton" class="main-button">
+                ABRIR TRANSMISIÓN 
+            </button>
 
-                <p class="etiqueta">
-                    REGISTRO DEL EVENTO
-                </p>
+        </div>
 
-                <div class="fecha-principal">
+    </section>
 
-                    <span>24</span>
 
-                    <div>
-                        <small>SEPTIEMBRE</small>
-                        <strong>2026</strong>
-                    </div>
 
+    <!-- =====================================================
+         PANTALLA 3 - ARCHIVO
+    ====================================================== -->
+
+    <section id="archiveScreen" class="screen">
+
+        <div class="archive">
+
+            <div class="archive-header">
+
+                <div class="archive-code">
+                    SYSTEM://CLASSIFIED
                 </div>
 
-                <p class="texto-fecha">
-                    Ese día es nuestro cumpleaños.
-                </p>
+                <h1>
+                    ARCHIVO SECRETO
+                </h1>
 
-                <div class="pero">
-                    PERO...
-                </div>
-
-                <div class="fecha-festejo">
-
-                    <span>26</span>
-
-                    <div>
-                        <small>SEPTIEMBRE</small>
-                        <strong>2026</strong>
-                    </div>
-
-                </div>
-
-                <p class="festejo-texto">
-                    Ese es el día en que<br>
-                    <b>lo vamos a festejar.</b>
+                <p>
+                    Se encontraron archivos relacionados con el evento.
                 </p>
 
             </div>
 
-        </section>
 
+            <div class="files-grid">
 
-        <!-- INFORMACIÓN -->
-        <section class="seccion informacion">
+                <!-- EVENTO -->
 
-            <div class="numero">
-                03 / 06
-            </div>
+                <button class="file" data-file="evento">
 
-            <div class="info-contenido">
-
-                <p class="etiqueta">
-                    DATOS DEL CASO
-                </p>
-
-                <h2>
-                    La información<br>
-                    que necesitás.
-                </h2>
-
-                <div class="datos">
-
-                    <div class="dato">
-
-                        <span class="dato-numero">
-                            01
-                        </span>
-
-                        <div>
-                            <small>UBICACIÓN</small>
-
-                            <h3>
-                                BARRIO NOREGON
-                            </h3>
-
-                            <p>
-                                LOTE 158
-                            </p>
-                        </div>
-
+                    <div class="file-icon">
+                        ◈
                     </div>
 
-
-                    <div class="dato">
-
-                        <span class="dato-numero">
-                            02
-                        </span>
-
-                        <div>
-                            <small>HORARIO</small>
-
-                            <h3>
-                                11:00 HS
-                            </h3>
-
-                            <p>
-                                Puntualidad recomendada.
-                            </p>
-                        </div>
-
+                    <div class="file-info">
+                        <strong>EVENTO</strong>
+                        <span>event.data</span>
                     </div>
 
-
-                    <div class="dato">
-
-                        <span class="dato-numero">
-                            03
-                        </span>
-
-                        <div>
-                            <small>PROTAGONISTAS</small>
-
-                            <h3>
-                                EVU & AYLU
-                            </h3>
-
-                            <p>
-                                Cumpliendo años otra vez.
-                            </p>
-                        </div>
-
+                    <div class="file-arrow">
+                        →
                     </div>
 
-                </div>
-
-            </div>
-
-        </section>
+                </button>
 
 
-        <!-- INTERACTIVO -->
-        <section class="seccion descubrir">
 
-            <div class="numero">
-                04 / 06
-            </div>
+                <!-- UBICACION -->
 
-            <div class="descubrir-contenido">
+                <button class="file location-file" data-file="ubicacion">
 
-                <p class="etiqueta">
-                    ARCHIVOS ADICIONALES
-                </p>
-
-                <h2>
-                    Elegí qué<br>
-                    querés <i>descubrir.</i>
-                </h2>
-
-                <div class="botones-descubrir">
-
-                    <button data-info="comida">
-                        <span>01</span>
-                        <strong>COMIDA</strong>
-                        <b>+</b>
-                    </button>
-
-                    <button data-info="musica">
-                        <span>02</span>
-                        <strong>MÚSICA</strong>
-                        <b>+</b>
-                    </button>
-
-                    <button data-info="fotos">
-                        <span>03</span>
-                        <strong>FOTOS</strong>
-                        <b>+</b>
-                    </button>
-
-                    <button data-info="baile">
-                        <span>04</span>
-                        <strong>BAILE</strong>
-                        <b>+</b>
-                    </button>
-
-                    <button data-info="sorpresa">
-                        <span>05</span>
-                        <strong>SORPRESA</strong>
-                        <b>+</b>
-                    </button>
-
-                    <button data-info="final">
-                        <span>06</span>
-                        <strong>???</strong>
-                        <b>+</b>
-                    </button>
-
-                </div>
-
-                <div id="respuesta" class="respuesta">
-
-                    <span id="respuestaNumero">
-                        00
-                    </span>
-
-                    <p id="respuestaTexto">
-                        Seleccioná un archivo.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- CUENTA REGRESIVA -->
-        <section class="seccion countdown">
-
-            <div class="numero">
-                05 / 06
-            </div>
-
-            <div class="countdown-contenido">
-
-                <p class="etiqueta">
-                    CUENTA REGRESIVA
-                </p>
-
-                <h2>
-                    El momento<br>
-                    se acerca.
-                </h2>
-
-                <div class="reloj">
-
-                    <div class="tiempo">
-                        <strong id="dias">00</strong>
-                        <span>DÍAS</span>
+                    <div class="location-icon">
+                        📍  
                     </div>
 
-                    <div class="separador">:</div>
-
-                    <div class="tiempo">
-                        <strong id="horas">00</strong>
-                        <span>HORAS</span>
+                    <div class="file-info">
+                        <strong>UBICACIÓN</strong>
+                        <span>location.data</span>
                     </div>
 
-                    <div class="separador">:</div>
-
-                    <div class="tiempo">
-                        <strong id="minutos">00</strong>
-                        <span>MIN</span>
+                    <div class="file-arrow">
+                        →
                     </div>
 
-                    <div class="separador">:</div>
+                </button>
 
-                    <div class="tiempo">
-                        <strong id="segundos">00</strong>
-                        <span>SEG</span>
+
+
+                <!-- HORARIO -->
+
+                <button class="file" data-file="horario">
+
+                    <div class="file-icon">
+                        ◷
                     </div>
 
-                </div>
+                    <div class="file-info">
+                        <strong>HORARIO</strong>
+                        <span>schedule.data</span>
+                    </div>
 
-                <div class="fecha-reloj">
-                    26 · 09 · 2026 — 11:00 HS a 16:00 HS
-                </div>
+                    <div class="file-arrow">
+                        →
+                    </div>
 
-            </div>
-
-        </section>
-
-        </section>
+                </button>
 
 
-        <!-- FINAL -->
-        <section class="seccion final">
 
-            <div class="final-contenido">
+                <!-- ARCHIVO SECRETO -->
 
-                <p class="etiqueta">
-                    FIN DEL EXPEDIENTE
-                </p>
+                <button class="file secret-file" data-file="secreto">
 
-                <h2>
-                    Bueno...
-                </h2>
+                    <div class="file-icon">
+                        ⚠
+                    </div>
 
-                <h3>
-                    Ya sabés todo.
-                </h3>
+                    <div class="file-info">
+                        <strong>ARCHIVO_SECRETO</strong>
+                        <span>guest_analysis.exe</span>
+                    </div>
 
-                <p class="falta">
-                    Ahora falta una sola cosa.
-                </p>
+                    <div class="file-arrow">
+                        →
+                    </div>
 
-                <button id="venirBtn">
-                    ¿VENÍS?
-                    <span>♡</span>
                 </button>
 
             </div>
 
-        </section>
 
-    </main>
+            <div class="archive-footer">
+                4 ARCHIVOS ENCONTRADOS // 1 ARCHIVO RESTRINGIDO
+            </div>
+
+        </div>
+
+    </section>
 
 
-    <!-- PANTALLA FINAL -->
 
-    <div id="finalPantalla" class="final-pantalla">
+    <!-- =====================================================
+         MODAL
+    ====================================================== -->
 
-        <div class="particulas"></div>
+    <div id="fileModal" class="modal">
 
-        <div class="final-mensaje">
+        <div class="modal-window">
 
-            <p>
-                EXPEDIENTE CERRADO
-            </p>
+            <div class="modal-header">
 
-            <h2>
-                ¡TE ESPERAMOS!
-            </h2>
+                <span>
+                    SYSTEM_FILE
+                </span>
 
-            <div class="final-linea"></div>
+                <button id="closeModal">
+                    ×
+                </button>
 
-            <strong>
-                26 · 09 · 2026
-            </strong>
+            </div>
 
-            <span>
-                11:00 HS a 16:00 HS
-            </span>
-
-            <small>
-                EVU & AYLU ♡
-            </small>
+            <div id="modalContent" class="modal-content"></div>
 
         </div>
 
     </div>
+
+
+
+    <!-- =====================================================
+         PANTALLA 4 - ANALISIS
+    ====================================================== -->
+
+    <section id="analysisScreen" class="screen">
+
+        <div class="analysis">
+
+            <div class="analysis-header">
+
+                <div class="analysis-status">
+                    ● SYSTEM ANALYSIS
+                </div>
+
+                <h1>
+                    GUEST_ANALYSIS.EXE
+                </h1>
+
+                <p>
+                    Ejecutando protocolo de evaluación...
+                </p>
+
+            </div>
+
+
+            <div id="analysisText" class="analysis-text"></div>
+
+
+            <div id="analysisResult" class="analysis-result">
+
+                <div class="result-line">
+                    &gt; VERIFICANDO RESULTADOS...
+                </div>
+
+                <div class="result-line">
+                    &gt; Todos los parámetros fueron procesados.
+                </div>
+
+                <div class="result-line">
+                    &gt; Generando decisión final...
+                </div>
+
+                <div class="result-final">
+                    RESULTADO:
+                    <strong>INVITADO APROBADO ✓</strong>
+                </div>
+
+                <button id="continueButton" class="main-button">
+                    CONTINUAR →
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PANTALLA 5 - FINAL
+    ====================================================== -->
+
+    <section id="finalScreen" class="screen">
+
+        <div class="final">
+
+            <div class="final-classified">
+                CLASSIFIED EVENT
+            </div>
+
+
+            <div class="final-date">
+                26.09.2026
+            </div>
+
+
+            <div class="final-time">
+                11:00 — 16:00 HS
+            </div>
+
+
+            <div class="final-location">
+                LOCATION: <span>CLASSIFIED</span>
+            </div>
+
+
+            <div id="finalMessage" class="final-message">
+                Una última cosa...
+            </div>
+
+
+            <button id="locationButton" class="location-button">
+                REVELAR UBICACIÓN
+            </button>
+
+            <div id="locationReveal" class="location-reveal">
+                <span>
+                    UBICACIÓN DESBLOQUEADA
+                </span>
+                <span>hacer click en el botón de abajo, se abrirá Google Maps con la ubicación exacta del evento.</span> 
+                <a href="https://maps.app.goo.gl/8ByVy2pudiYjXPne9" target="_blank">Nuestra casa</a>
+
+                
+
+            </div>
+
+
+            <div id="missionText" class="mission-text">
+
+                <div>&gt; mission.accepted()</div>
+                <div>&gt; preparing_event()</div>
+                <div>&gt; cake.loaded ✓</div>
+                <div>&gt; music.loaded ✓</div>
+                <div>&gt; friends.loaded ✓</div>
+                <div>&gt; chaos.loaded ✓</div>
+                <div class="ready">
+                    &gt; birthday.exe IS READY
+                </div>
+
+            </div>
+
+
+            <div class="birthday-message">
+                NOS VEMOS EL 26.09.2026
+            </div>
+
+
+            <div class="confirmation-question">
+                ¿Confirmás tu asistencia?
+            </div>
+
+
+            <button id="yesButton" class="yes-button">
+                Confirmar asistencia
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PANTALLA 6 - CONFIRMACION
+    ====================================================== -->
+
+    <section id="confirmationScreen" class="screen">
+
+        <div class="confirmation">
+
+            <div class="confirmation-icon">
+                ✓
+            </div>
+
+            <div class="confirmation-small">
+                SYSTEM MESSAGE
+            </div>
+
+            <h1>
+                MISIÓN ACEPTADA
+            </h1>
+
+            <p>
+                Tu asistencia fue registrada correctamente.
+            </p>
+
+
+            <div class="confirmation-data">
+
+                <div>
+                    <span>DATE</span>
+                    <strong>26.09.2026</strong>
+                </div>
+
+                <div>
+                    <span>TIME</span>
+                    <strong>11:00 — 16:00</strong>
+                </div>
+
+                <div>
+                    <span>LOCATION</span>
+                    <strong>EN MI CASA</strong>
+                </div>
+                <div>
+                    <span>Algo que tenes que saber</span>
+                    <strong>Nuestro cumpleaños es el 24.09.2026 y lo festejamos el 26.09.2026</strong>
+                </div>
+
+            </div>
+
+
+            <div class="confirmation-footer">
+                Te esperamosss
+            </div>
+
+        </div>
+
+    </section>
+
 
 
     <script src="script.js"></script>
