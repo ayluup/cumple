@@ -1,204 +1,277 @@
 /* =========================================
-   ELEMENTOS
+   EXPEDIENTE 26
+   EVU & AYLU
 ========================================= */
-
-const portada =
-    document.getElementById("portada");
-
-const invitacion =
-    document.getElementById("invitacion");
-
-const abrirInvitacion =
-    document.getElementById("abrirInvitacion");
 
 
 /* =========================================
-   ABRIR INVITACIÓN
+   CURSOR
 ========================================= */
 
-abrirInvitacion.addEventListener(
-    "click",
-    () => {
+const cursor = document.querySelector(".cursor");
 
-        portada.style.opacity = "0";
+document.addEventListener("mousemove", (e) => {
 
-        portada.style.transform =
-            "scale(1.04)";
+    if (!cursor) return;
+
+    cursor.style.left = `${e.clientX}px`;
+    cursor.style.top = `${e.clientY}px`;
+
+});
 
 
-        setTimeout(() => {
-
-            portada.style.display =
-                "none";
-
-            invitacion.classList.remove(
-                "oculto"
-            );
-
-            window.scrollTo(
-                0,
-                0
-            );
-
-        }, 750);
-
-    }
+const elementosInteractivos = document.querySelectorAll(
+    "button, .foto-marco"
 );
+
+
+elementosInteractivos.forEach((elemento) => {
+
+    elemento.addEventListener("mouseenter", () => {
+
+        cursor?.classList.add("grande");
+
+    });
+
+
+    elemento.addEventListener("mouseleave", () => {
+
+        cursor?.classList.remove("grande");
+
+    });
+
+});
+
+
+/* =========================================
+   ABRIR ARCHIVO
+========================================= */
+
+const abrirBtn = document.getElementById("abrirBtn");
+
+const inicio = document.getElementById("inicio");
+
+const contenido = document.getElementById("contenido");
+
+
+abrirBtn.addEventListener("click", () => {
+
+    abrirBtn.innerHTML = "<span>DESCIFRANDO...</span>";
+
+    setTimeout(() => {
+
+        inicio.style.transition = "1s";
+        inicio.style.opacity = "0";
+        inicio.style.transform = "scale(1.05)";
+
+    }, 700);
+
+
+    setTimeout(() => {
+
+        inicio.style.display = "none";
+
+        contenido.classList.remove("oculto");
+
+        iniciarAnimaciones();
+
+        window.scrollTo({
+            top: 0,
+            behavior: "instant"
+        });
+
+    }, 1600);
+
+});
 
 
 /* =========================================
    ANIMACIONES AL HACER SCROLL
 ========================================= */
 
-const elementosReveal =
-    document.querySelectorAll(
-        ".reveal"
+function iniciarAnimaciones() {
+
+    const elementos = document.querySelectorAll(
+        ".seccion > div:not(.numero), .dato, .botones-descubrir button"
     );
 
 
-const observador =
-    new IntersectionObserver(
-        (entradas) => {
+    elementos.forEach((elemento) => {
 
-            entradas.forEach(
-                (entrada) => {
+        elemento.classList.add("reveal");
 
-                    if (
-                        entrada.isIntersecting
-                    ) {
+    });
 
-                        entrada.target.classList.add(
-                            "visible"
-                        );
 
-                        observador.unobserve(
-                            entrada.target
-                        );
+    const observer = new IntersectionObserver(
+        (entries) => {
 
-                    }
+            entries.forEach((entry) => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("visible");
 
                 }
-            );
+
+            });
 
         },
         {
-            threshold: 0.15,
-
-            rootMargin:
-                "0px 0px -40px 0px"
+            threshold: .15
         }
     );
 
 
-elementosReveal.forEach(
-    (elemento) => {
+    elementos.forEach((elemento) => {
 
-        observador.observe(
-            elemento
-        );
+        observer.observe(elemento);
 
-    }
-);
-
-
-/* =========================================
-   CONTADOR
-========================================= */
-
-/*
-    Cumpleaños:
-    24 de septiembre
-
-    Festejo:
-    26 de septiembre
-    11:00 hs
-*/
-
-const fechaFestejo =
-    new Date(
-        "2026-09-26T11:00:00"
-    ).getTime();
-
-
-const diasElemento =
-    document.getElementById(
-        "dias"
-    );
-
-const horasElemento =
-    document.getElementById(
-        "horas"
-    );
-
-const minutosElemento =
-    document.getElementById(
-        "minutos"
-    );
-
-const segundosElemento =
-    document.getElementById(
-        "segundos"
-    );
-
-
-function animarNumero(elemento) {
-
-    elemento.animate(
-        [
-            {
-                opacity: .4,
-                transform:
-                    "translateY(-8px)"
-            },
-
-            {
-                opacity: 1,
-                transform:
-                    "translateY(0)"
-            }
-        ],
-        {
-            duration: 350,
-            easing: "ease-out"
-        }
-    );
+    });
 
 }
 
 
-let valoresAnteriores = {
-    dias: null,
-    horas: null,
-    minutos: null,
-    segundos: null
+/* =========================================
+   ARCHIVOS INTERACTIVOS
+========================================= */
+
+const archivos = {
+
+    comida: {
+
+        numero: "01",
+
+        texto:
+            "Obviamente no podía faltar comida. Y sí, probablemente vas a repetir."
+
+    },
+
+    musica: {
+
+        numero: "02",
+
+        texto:
+            "Prepará tus mejores pasos. La música va a ser parte importante del expediente."
+
+    },
+
+    fotos: {
+
+        numero: "03",
+
+        texto:
+            "Porque algunas noches merecen quedar registradas para siempre."
+
+    },
+
+    baile: {
+
+        numero: "04",
+
+        texto:
+            "No aceptamos excusas. El que viene, baila."
+
+    },
+
+    sorpresa: {
+
+        numero: "05",
+
+        texto:
+            "Hay cosas que no se pueden revelar antes de tiempo..."
+
+    },
+
+    final: {
+
+        numero: "06",
+
+        texto:
+            "Si llegaste hasta acá, ya tenés suficiente información. O eso creemos."
+
+    }
+
 };
 
 
-function actualizarContador() {
+const botones = document.querySelectorAll(
+    ".botones-descubrir button"
+);
 
-    const ahora =
-        new Date().getTime();
 
+const respuestaNumero =
+    document.getElementById("respuestaNumero");
+
+
+const respuestaTexto =
+    document.getElementById("respuestaTexto");
+
+
+botones.forEach((boton) => {
+
+    boton.addEventListener("click", () => {
+
+        const tipo = boton.dataset.info;
+
+        const archivo = archivos[tipo];
+
+        if (!archivo) return;
+
+
+        botones.forEach((b) => {
+
+            b.classList.remove("activo");
+
+        });
+
+
+        boton.classList.add("activo");
+
+
+        respuestaNumero.textContent =
+            archivo.numero;
+
+
+        respuestaTexto.style.opacity = "0";
+
+
+        setTimeout(() => {
+
+            respuestaTexto.textContent =
+                archivo.texto;
+
+            respuestaTexto.style.opacity = "1";
+
+        }, 200);
+
+    });
+
+});
+
+
+/* =========================================
+   CUENTA REGRESIVA
+========================================= */
+
+const fechaObjetivo =
+    new Date("September 26, 2026 11:00:00").getTime();
+
+
+function actualizarCountdown() {
+
+    const ahora = new Date().getTime();
 
     const diferencia =
-        fechaFestejo - ahora;
+        fechaObjetivo - ahora;
 
 
-    if (
-        diferencia <= 0
-    ) {
+    if (diferencia <= 0) {
 
-        diasElemento.textContent =
-            "00";
-
-        horasElemento.textContent =
-            "00";
-
-        minutosElemento.textContent =
-            "00";
-
-        segundosElemento.textContent =
-            "00";
+        document.getElementById("dias").textContent = "00";
+        document.getElementById("horas").textContent = "00";
+        document.getElementById("minutos").textContent = "00";
+        document.getElementById("segundos").textContent = "00";
 
         return;
 
@@ -207,582 +280,164 @@ function actualizarContador() {
 
     const dias =
         Math.floor(
-            diferencia /
-            (
-                1000 *
-                60 *
-                60 *
-                24
-            )
+            diferencia / (1000 * 60 * 60 * 24)
         );
 
 
     const horas =
         Math.floor(
-            (
-                diferencia /
-                (
-                    1000 *
-                    60 *
-                    60
-                )
-            ) % 24
+            (diferencia / (1000 * 60 * 60)) % 24
         );
 
 
     const minutos =
         Math.floor(
-            (
-                diferencia /
-                (
-                    1000 *
-                    60
-                )
-            ) % 60
+            (diferencia / (1000 * 60)) % 60
         );
 
 
     const segundos =
         Math.floor(
-            (
-                diferencia /
-                1000
-            ) % 60
+            (diferencia / 1000) % 60
         );
 
 
-    const valores = {
-
-        dias,
-
-        horas,
-
-        minutos,
-
-        segundos
-
-    };
+    document.getElementById("dias").textContent =
+        String(dias).padStart(2, "0");
 
 
-    diasElemento.textContent =
-        String(dias)
-            .padStart(
-                2,
-                "0"
-            );
+    document.getElementById("horas").textContent =
+        String(horas).padStart(2, "0");
 
 
-    horasElemento.textContent =
-        String(horas)
-            .padStart(
-                2,
-                "0"
-            );
+    document.getElementById("minutos").textContent =
+        String(minutos).padStart(2, "0");
 
 
-    minutosElemento.textContent =
-        String(minutos)
-            .padStart(
-                2,
-                "0"
-            );
+    document.getElementById("segundos").textContent =
+        String(segundos).padStart(2, "0");
+
+}
 
 
-    segundosElemento.textContent =
-        String(segundos)
-            .padStart(
-                2,
-                "0"
-            );
+actualizarCountdown();
+
+
+setInterval(actualizarCountdown, 1000);
+
+
+/* =========================================
+   FOTO
+========================================= */
+
+const fotoMarco =
+    document.getElementById("fotoMarco");
+
+
+fotoMarco.addEventListener("click", () => {
+
+    fotoMarco.classList.toggle("revelada");
+
+});
+
+
+/* =========================================
+   BOTÓN FINAL
+========================================= */
+
+const venirBtn =
+    document.getElementById("venirBtn");
+
+
+const finalPantalla =
+    document.getElementById("finalPantalla");
+
+
+const particulas =
+    document.querySelector(".particulas");
+
+
+venirBtn.addEventListener("click", () => {
+
+    finalPantalla.classList.add("mostrar");
+
+    crearParticulas();
+
+});
+
+
+/* =========================================
+   PARTICULAS
+========================================= */
+
+function crearParticulas() {
+
+    particulas.innerHTML = "";
+
+
+    for (let i = 0; i < 100; i++) {
+
+        const particula =
+            document.createElement("div");
+
+
+        particula.classList.add("particula");
+
+
+        particula.style.left =
+            Math.random() * 100 + "%";
+
+
+        particula.style.setProperty(
+            "--x",
+            `${(Math.random() - .5) * 300}px`
+        );
+
+
+        particula.style.animationDelay =
+            Math.random() * 2 + "s";
+
+
+        particula.style.animationDuration =
+            2 + Math.random() * 3 + "s";
+
+
+        particulas.appendChild(particula);
+
+    }
+
+}
+
+
+/* =========================================
+   EFECTO PARALLAX SUAVE
+========================================= */
+
+document.addEventListener("mousemove", (e) => {
+
+    const x =
+        (e.clientX / window.innerWidth - .5);
+
+
+    const y =
+        (e.clientY / window.innerHeight - .5);
+
+
+    const archivo =
+        document.querySelector(".archivo");
 
 
     if (
-        valoresAnteriores.dias !==
-        valores.dias
+        archivo &&
+        inicio &&
+        inicio.style.display !== "none"
     ) {
 
-        animarNumero(
-            diasElemento
-        );
+        archivo.style.transform =
+            `perspective(1000px)
+             rotateY(${x * 2}deg)
+             rotateX(${y * -2}deg)`;
 
     }
 
-
-    if (
-        valoresAnteriores.horas !==
-        valores.horas
-    ) {
-
-        animarNumero(
-            horasElemento
-        );
-
-    }
-
-
-    if (
-        valoresAnteriores.minutos !==
-        valores.minutos
-    ) {
-
-        animarNumero(
-            minutosElemento
-        );
-
-    }
-
-
-    if (
-        valoresAnteriores.segundos !==
-        valores.segundos
-    ) {
-
-        animarNumero(
-            segundosElemento
-        );
-
-    }
-
-
-    valoresAnteriores =
-        valores;
-
-}
-
-
-actualizarContador();
-
-
-setInterval(
-    actualizarContador,
-    1000
-);
-
-
-/* =========================================
-   SECCIÓN SORPRESA
-========================================= */
-
-const sorpresaBtn =
-    document.getElementById(
-        "sorpresaBtn"
-    );
-
-
-const sorpresa =
-    document.getElementById(
-        "sorpresa"
-    );
-
-
-sorpresaBtn.addEventListener(
-    "click",
-    () => {
-
-        const abierta =
-            sorpresa.classList.toggle(
-                "abierta"
-            );
-
-
-        if (abierta) {
-
-            sorpresaBtn.innerHTML =
-                `
-                OCULTAR
-                <span>↑</span>
-                `;
-
-        } else {
-
-            sorpresaBtn.innerHTML =
-                `
-                DESCUBRIR
-                <span>✦</span>
-                `;
-
-        }
-
-    }
-);
-
-
-/* =========================================
-   MODAL
-========================================= */
-
-const confirmarAsistencia =
-    document.getElementById(
-        "confirmarAsistencia"
-    );
-
-
-const modal =
-    document.getElementById(
-        "modal"
-    );
-
-
-const cerrarModal =
-    document.getElementById(
-        "cerrarModal"
-    );
-
-
-confirmarAsistencia.addEventListener(
-    "click",
-    () => {
-
-        modal.classList.add(
-            "activo"
-        );
-
-        document.body.classList.add(
-            "modal-abierto"
-        );
-
-        crearConfeti();
-
-    }
-);
-
-
-function cerrarVentana() {
-
-    modal.classList.remove(
-        "activo"
-    );
-
-    document.body.classList.remove(
-        "modal-abierto"
-    );
-
-}
-
-
-cerrarModal.addEventListener(
-    "click",
-    cerrarVentana
-);
-
-
-modal.addEventListener(
-    "click",
-    (evento) => {
-
-        if (
-            evento.target === modal
-        ) {
-
-            cerrarVentana();
-
-        }
-
-    }
-);
-
-
-document.addEventListener(
-    "keydown",
-    (evento) => {
-
-        if (
-            evento.key === "Escape"
-        ) {
-
-            cerrarVentana();
-
-        }
-
-    }
-);
-
-
-/* =========================================
-   CONFETI
-========================================= */
-
-function crearConfeti() {
-
-    const cantidad =
-        window.innerWidth < 600
-            ? 25
-            : 45;
-
-
-    for (
-        let i = 0;
-        i < cantidad;
-        i++
-    ) {
-
-        const confeti =
-            document.createElement(
-                "div"
-            );
-
-
-        confeti.style.position =
-            "fixed";
-
-
-        confeti.style.width =
-            Math.random() * 6 + 4 +
-            "px";
-
-
-        confeti.style.height =
-            Math.random() * 6 + 4 +
-            "px";
-
-
-        confeti.style.background =
-            i % 2 === 0
-                ? "#aa8b5a"
-                : "#e8dfd1";
-
-
-        confeti.style.left =
-            Math.random() * 100 +
-            "vw";
-
-
-        confeti.style.top =
-            "-15px";
-
-
-        confeti.style.zIndex =
-            "10000";
-
-
-        confeti.style.pointerEvents =
-            "none";
-
-
-        confeti.style.borderRadius =
-            Math.random() > .5
-                ? "50%"
-                : "0";
-
-
-        document.body.appendChild(
-            confeti
-        );
-
-
-        const duracion =
-            1800 +
-            Math.random() * 2500;
-
-
-        const movimientoX =
-            (
-                Math.random() -
-                .5
-            ) * 250;
-
-
-        confeti.animate(
-            [
-
-                {
-                    transform:
-                        "translateY(0) rotate(0deg)",
-                    opacity: 1
-                },
-
-                {
-                    transform:
-                        `
-                        translate(
-                            ${movimientoX}px,
-                            110vh
-                        )
-                        rotate(720deg)
-                        `,
-                    opacity: 0
-                }
-
-            ],
-            {
-                duration:
-                    duracion,
-
-                easing:
-                    "cubic-bezier(.2,.7,.3,1)"
-            }
-        );
-
-
-        setTimeout(
-            () => {
-
-                confeti.remove();
-
-            },
-            duracion
-        );
-
-    }
-
-}
-
-
-/* =========================================
-   PARALLAX SOLO EN PC
-========================================= */
-
-const puedeMoverMouse =
-    window.matchMedia(
-        "(min-width: 900px)"
-    ).matches;
-
-
-if (puedeMoverMouse) {
-
-    const circulos =
-        document.querySelectorAll(
-            ".circulo-decorativo"
-        );
-
-
-    window.addEventListener(
-        "mousemove",
-        (evento) => {
-
-            const x =
-                (
-                    evento.clientX /
-                    window.innerWidth -
-                    .5
-                ) * 25;
-
-
-            const y =
-                (
-                    evento.clientY /
-                    window.innerHeight -
-                    .5
-                ) * 25;
-
-
-            circulos.forEach(
-                (
-                    circulo,
-                    index
-                ) => {
-
-                    const multiplicador =
-                        index === 0
-                            ? 1
-                            : -1;
-
-
-                    circulo.style.transform =
-                        `
-                        translate(
-                            ${x * multiplicador}px,
-                            ${y * multiplicador}px
-                        )
-                        `;
-
-                }
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================
-   EFECTO EN LA FECHA 26
-========================================= */
-
-const fechaImportante =
-    document.querySelector(
-        ".fecha-importante .fecha-numero"
-    );
-
-
-if (fechaImportante) {
-
-    fechaImportante.addEventListener(
-        "click",
-        () => {
-
-            fechaImportante.animate(
-                [
-
-                    {
-                        transform:
-                            "scale(1)"
-                    },
-
-                    {
-                        transform:
-                            "scale(1.15) rotate(4deg)"
-                    },
-
-                    {
-                        transform:
-                            "scale(1) rotate(0)"
-                    }
-
-                ],
-                {
-                    duration: 600,
-
-                    easing:
-                        "ease-out"
-                }
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================
-   EFECTO TÁCTIL EN CELULAR
-========================================= */
-
-const tarjetas =
-    document.querySelectorAll(
-        ".info-card, .sorpresa-item"
-    );
-
-
-tarjetas.forEach(
-    (tarjeta) => {
-
-        tarjeta.addEventListener(
-            "touchstart",
-            () => {
-
-                tarjeta.style.transform =
-                    "scale(.97)";
-
-            },
-            {
-                passive: true
-            }
-        );
-
-
-        tarjeta.addEventListener(
-            "touchend",
-            () => {
-
-                tarjeta.style.transform =
-                    "";
-
-            },
-            {
-                passive: true
-            }
-        );
-
-    }
-);
+});

@@ -3,58 +3,43 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
-    <meta name="theme-color" content="#1c1b19">
-
-    <title>Evu & Aylu | Nuestra celebración</title>
+    <title>Expediente 26 | Evu & Aylu</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
 
-
 <body>
 
-    <!-- =========================================
-         PORTADA
-    ========================================== -->
+    <!-- CURSOR -->
+    <div class="cursor"></div>
 
-    <section id="portada">
+    <!-- PANTALLA INICIAL -->
+    <section id="inicio" class="pantalla-inicial">
 
-        <div class="fondo-portada">
+        <div class="ruido"></div>
 
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+        <div class="scan-line"></div>
 
-        </div>
+        <div class="archivo">
 
-
-        <div class="portada-contenido">
-
-            <div class="entrada entrada-1">
-
-                <p class="mini-titulo">
-                    TENEMOS EL AGRADO DE INVITARTE
-                </p>
-
+            <div class="top-info">
+                <span>ARCHIVO Nº 026</span>
+                <span>CLASIFICADO</span>
             </div>
 
+            <div class="archivo-centro">
 
-            <div class="linea-entrada"></div>
-
-
-            <div class="entrada entrada-2">
+                <p class="mini-titulo">
+                    DOCUMENTO CONFIDENCIAL
+                </p>
 
                 <h1>
                     EVU
@@ -62,105 +47,54 @@
                     AYLU
                 </h1>
 
-            </div>
+                <div class="linea"></div>
 
-
-            <div class="entrada entrada-3">
-
-                <p class="subtitulo">
-                    A NUESTRO FESTEJO
+                <p>
+                    Se ha encontrado un evento<br>
+                    que requiere su presencia.
                 </p>
 
-            </div>
-
-            <div class="entrada entrada-5">
-
-                <p class="fecha-portada">
-                    24 · 09 · 2026
-                </p>
+                <button id="abrirBtn">
+                    <span>ABRIR ARCHIVO</span>
+                    <b>→</b>
+                </button>
 
             </div>
 
-        </div>
-
-
-        <div class="scroll-indicator">
-
-            <span>DESLIZÁ</span>
-
-            <b>↓</b>
+            <div class="bottom-info">
+                <span>STATUS: EN ESPERA</span>
+                <span>24.09.2026</span>
+            </div>
 
         </div>
 
     </section>
 
 
-    <!-- =========================================
-         INVITACIÓN
-    ========================================== -->
+    <!-- CONTENIDO PRINCIPAL -->
 
-    <main id="invitacion" class="oculto">
+    <main id="contenido" class="oculto">
 
+        <!-- INTRO -->
+        <section class="seccion intro">
 
-        <!-- =====================================
-             HERO
-        ====================================== -->
+            <div class="numero">
+                01 / 06
+            </div>
 
-        <section class="hero">
+            <div class="contenido-intro">
 
-            <div class="circulo-decorativo circulo-1"></div>
-            <div class="circulo-decorativo circulo-2"></div>
-
-
-            <div class="hero-contenido">
-
-                <p class="etiqueta reveal">
-                    ✦ ESTÁS INVITADO/A ✦
+                <p class="etiqueta">
+                    ARCHIVO ABIERTO
                 </p>
 
-
-                <h2 class="titulo-grande reveal">
-
-                    A NUESTRO
-
-                    <span>
-                        FESTEJO
-                    </span>
-
+                <h2>
+                    Tenemos<br>
+                    <i>algo</i> que celebrar.
                 </h2>
 
-
-                <div class="separador reveal">
-
-                    <i></i>
-
-                    <span>✦</span>
-
-                    <i></i>
-
-                </div>
-
-
-                <p class="texto-hero reveal">
-
-                    Hay momentos que merecen ser compartidos
-                    y queremos que seas parte del nuestro.
-
-                </p>
-
-
-                <div class="nombres reveal">
-
-                    EVU <span>&</span> AYLU
-
-                </div>
-
-
-                <div class="scroll-hint reveal">
-
-                    <span>SEGUÍ BAJANDO</span>
-                    <b>↓</b>
-
+                <div class="scroll">
+                    ↓ SCROLL PARA CONTINUAR
                 </div>
 
             </div>
@@ -168,210 +102,52 @@
         </section>
 
 
+        <!-- FECHA -->
+        <section class="seccion fecha">
 
-        <!-- =====================================
-             FECHAS
-        ====================================== -->
-
-        <section class="fechas seccion">
-
-            <div class="seccion-contenido">
-
-                <p class="etiqueta reveal">
-                    UNA PEQUEÑA ACLARACIÓN...
-                </p>
-
-
-                <h2 class="titulo-seccion reveal">
-
-                    DOS FECHAS,
-
-                    <span>
-                        UN SOLO FESTEJO
-                    </span>
-
-                </h2>
-
-
-                <div class="timeline">
-
-
-                    <div class="timeline-line">
-
-                        <span></span>
-
-                    </div>
-
-
-                    <article class="fecha-card reveal">
-
-                        <div class="fecha-numero">
-
-                            <span>24</span>
-
-                            <small>
-                                SEP
-                            </small>
-
-                        </div>
-
-
-                        <div class="fecha-texto">
-
-                            <p>
-                                NUESTRO CUMPLEAÑOS
-                            </p>
-
-                            <h3>
-                                24 DE SEPTIEMBRE
-                            </h3>
-
-                            <span>
-                                El día en que oficialmente
-                                cumplimos años.
-                            </span>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <div class="flecha-timeline reveal">
-
-                        ↓
-
-                    </div>
-
-
-
-                    <article class="fecha-card fecha-importante reveal">
-
-                        <div class="fecha-numero">
-
-                            <span>26</span>
-
-                            <small>
-                                SEP
-                            </small>
-
-                        </div>
-
-
-                        <div class="fecha-texto">
-
-                            <p>
-                                EL GRAN FESTEJO
-                            </p>
-
-                            <h3>
-                                26 DE SEPTIEMBRE
-                            </h3>
-
-                            <span>
-                                Este es el día que queremos
-                                compartir con vos.
-                            </span>
-
-                        </div>
-
-                    </article>
-
-
-                </div>
-
+            <div class="numero">
+                02 / 06
             </div>
 
-        </section>
+            <div class="fecha-contenido">
 
-
-
-        <!-- =====================================
-             CONTADOR
-        ====================================== -->
-
-        <section class="contador seccion">
-
-            <div class="seccion-contenido">
-
-                <p class="etiqueta reveal">
-                    CADA VEZ FALTA MENOS
+                <p class="etiqueta">
+                    REGISTRO DEL EVENTO
                 </p>
 
+                <div class="fecha-principal">
 
-                <h2 class="titulo-seccion reveal">
+                    <span>24</span>
 
-                    NOS VEMOS
-
-                    <span>
-                        EN...
-                    </span>
-
-                </h2>
-
-
-                <div class="contador-grid reveal">
-
-
-                    <div class="contador-item">
-
-                        <strong id="dias">
-                            00
-                        </strong>
-
-                        <span>
-                            DÍAS
-                        </span>
-
+                    <div>
+                        <small>SEPTIEMBRE</small>
+                        <strong>2026</strong>
                     </div>
-
-
-                    <div class="contador-item">
-
-                        <strong id="horas">
-                            00
-                        </strong>
-
-                        <span>
-                            HORAS
-                        </span>
-
-                    </div>
-
-
-                    <div class="contador-item">
-
-                        <strong id="minutos">
-                            00
-                        </strong>
-
-                        <span>
-                            MINUTOS
-                        </span>
-
-                    </div>
-
-
-                    <div class="contador-item">
-
-                        <strong id="segundos">
-                            00
-                        </strong>
-
-                        <span>
-                            SEGUNDOS
-                        </span>
-
-                    </div>
-
 
                 </div>
 
+                <p class="texto-fecha">
+                    Ese día es nuestro cumpleaños.
+                </p>
 
-                <p class="contador-fecha reveal">
+                <div class="pero">
+                    PERO...
+                </div>
 
-                    26 DE SEPTIEMBRE · 11:00 HS
+                <div class="fecha-festejo">
 
+                    <span>26</span>
+
+                    <div>
+                        <small>SEPTIEMBRE</small>
+                        <strong>2026</strong>
+                    </div>
+
+                </div>
+
+                <p class="festejo-texto">
+                    Ese es el día en que<br>
+                    <b>lo vamos a festejar.</b>
                 </p>
 
             </div>
@@ -379,292 +155,87 @@
         </section>
 
 
+        <!-- INFORMACIÓN -->
+        <section class="seccion informacion">
 
-        <!-- =====================================
-             INFORMACIÓN
-        ====================================== -->
-
-        <section class="informacion seccion">
-
-            <div class="seccion-contenido">
-
-                <p class="etiqueta reveal">
-                    GUARDÁ ESTA FECHA
-                </p>
-
-
-                <h2 class="titulo-seccion reveal">
-
-                    TODO LO QUE
-
-                    <span>
-                        NECESITÁS SABER
-                    </span>
-
-                </h2>
-
-
-                <div class="info-grid">
-
-
-                    <article class="info-card reveal">
-
-                        <div class="info-top">
-
-                            <span>
-                                01
-                            </span>
-
-                            <b>
-                                FECHA
-                            </b>
-
-                        </div>
-
-
-                        <div class="info-icon">
-                            ◇
-                        </div>
-
-
-                        <h3>
-                            26 DE
-                            <br>
-                            SEPTIEMBRE
-                        </h3>
-
-
-                        <p>
-                            Sábado
-                        </p>
-
-                    </article>
-
-
-
-                    <article class="info-card reveal">
-
-                        <div class="info-top">
-
-                            <span>
-                                02
-                            </span>
-
-                            <b>
-                                HORA
-                            </b>
-
-                        </div>
-
-
-                        <div class="info-icon">
-                            ◷
-                        </div>
-
-
-                        <h3>
-                            11:00
-                            <br>
-                            HS
-                        </h3>
-
-
-                        <p>
-                            A partir de las 11
-                        </p>
-
-                    </article>
-
-
-
-                    <article class="info-card reveal">
-
-                        <div class="info-top">
-
-                            <span>
-                                03
-                            </span>
-
-                            <b>
-                                LUGAR
-                            </b>
-
-                        </div>
-
-
-                        <div class="info-icon">
-                            ⌂
-                        </div>
-
-
-                        <h3>
-                            BARRIO
-                            <br>
-                            NOREGON
-                        </h3>
-
-
-                        <p>
-                            Lote 158
-                        </p>
-
-                    </article>
-
-
-                </div>
-
+            <div class="numero">
+                03 / 06
             </div>
 
-        </section>
+            <div class="info-contenido">
 
-
-
-        <!-- =====================================
-             EXPERIENCIA
-        ====================================== -->
-
-        <section class="experiencia seccion">
-
-            <div class="seccion-contenido">
-
-                <p class="etiqueta reveal">
-                    AHORA VIENE LO DIVERTIDO
+                <p class="etiqueta">
+                    DATOS DEL CASO
                 </p>
 
-
-                <h2 class="titulo-seccion reveal">
-
-                    ¿QUERÉS SABER
-
-                    <span>
-                        QUÉ TE ESPERA?
-                    </span>
-
+                <h2>
+                    La información<br>
+                    que necesitás.
                 </h2>
 
+                <div class="datos">
 
-                <button id="sorpresaBtn" class="boton-secundario reveal">
+                    <div class="dato">
 
-                    DESCUBRIR
-
-                    <span>
-                        ✦
-                    </span>
-
-                </button>
-
-
-                <div id="sorpresa" class="sorpresa">
-
-
-                    <article class="sorpresa-item">
-
-                        <div class="sorpresa-numero">
+                        <span class="dato-numero">
                             01
+                        </span>
+
+                        <div>
+                            <small>UBICACIÓN</small>
+
+                            <h3>
+                                BARRIO NOREGON
+                            </h3>
+
+                            <p>
+                                LOTE 158
+                            </p>
                         </div>
 
-                        <div class="sorpresa-icono">
-                            ♡
-                        </div>
-
-                        <h3>
-                            COMIDA
-                        </h3>
-
-                        <p>
-                            Algo rico no puede faltar.
-                        </p>
-
-                    </article>
+                    </div>
 
 
+                    <div class="dato">
 
-                    <article class="sorpresa-item">
-
-                        <div class="sorpresa-numero">
+                        <span class="dato-numero">
                             02
+                        </span>
+
+                        <div>
+                            <small>HORARIO</small>
+
+                            <h3>
+                                11:00 HS
+                            </h3>
+
+                            <p>
+                                Puntualidad recomendada.
+                            </p>
                         </div>
 
-                        <div class="sorpresa-icono">
-                            ♪
-                        </div>
-
-                        <h3>
-                            MÚSICA
-                        </h3>
-
-                        <p>
-                            Prepará tu mejor canción.
-                        </p>
-
-                    </article>
+                    </div>
 
 
+                    <div class="dato">
 
-                    <article class="sorpresa-item">
-
-                        <div class="sorpresa-numero">
+                        <span class="dato-numero">
                             03
+                        </span>
+
+                        <div>
+                            <small>PROTAGONISTAS</small>
+
+                            <h3>
+                                EVU & AYLU
+                            </h3>
+
+                            <p>
+                                Cumpliendo años otra vez.
+                            </p>
                         </div>
 
-                        <div class="sorpresa-icono">
-                            ◇
-                        </div>
-
-                        <h3>
-                            BRINDIS
-                        </h3>
-
-                        <p>
-                            Por otro año más.
-                        </p>
-
-                    </article>
-
-
-
-                    <article class="sorpresa-item">
-
-                        <div class="sorpresa-numero">
-                            04
-                        </div>
-
-                        <div class="sorpresa-icono">
-                            ✦
-                        </div>
-
-                        <h3>
-                            FIESTA
-                        </h3>
-
-                        <p>
-                            Vinimos a festejar.
-                        </p>
-
-                    </article>
-
-
-
-                    <article class="sorpresa-item">
-
-                        <div class="sorpresa-numero">
-                            05
-                        </div>
-
-                        <div class="sorpresa-icono">
-                            ◎
-                        </div>
-
-                        <h3>
-                            FOTOS
-                        </h3>
-
-                        <p>
-                            Para guardar el recuerdo.
-                        </p>
-
-                    </article>
-
+                    </div>
 
                 </div>
 
@@ -673,195 +244,206 @@
         </section>
 
 
+        <!-- INTERACTIVO -->
+        <section class="seccion descubrir">
 
-        <!-- =====================================
-             MENSAJE
-        ====================================== -->
-
-        <section class="mensaje seccion">
-
-            <div class="mensaje-contenido reveal">
-
-                <span class="comilla">
-                    “
-                </span>
-
-
-                <p>
-                    Porque cumplir años es lindo,
-                    pero compartirlo con las personas
-                    que queremos lo hace todavía mejor.
-                </p>
-
-
-                <div class="linea-corta"></div>
-
-
-                <strong>
-                    EVU & AYLU
-                </strong>
-
+            <div class="numero">
+                04 / 06
             </div>
 
-        </section>
+            <div class="descubrir-contenido">
 
-
-
-        <!-- =====================================
-             CONFIRMACIÓN
-        ====================================== -->
-
-        <section class="confirmacion seccion">
-
-            <div class="seccion-contenido">
-
-                <p class="etiqueta reveal">
-                    Y AHORA...
+                <p class="etiqueta">
+                    ARCHIVOS ADICIONALES
                 </p>
 
-
-                <h2 class="titulo-seccion reveal">
-
-                    ¿VENÍS?
-
+                <h2>
+                    Elegí qué<br>
+                    querés <i>descubrir.</i>
                 </h2>
 
+                <div class="botones-descubrir">
 
-                <p class="texto-confirmacion reveal">
+                    <button data-info="comida">
+                        <span>01</span>
+                        <strong>COMIDA</strong>
+                        <b>+</b>
+                    </button>
 
-                    Nos encantaría contar con vos
-                    para compartir este día especial.
+                    <button data-info="musica">
+                        <span>02</span>
+                        <strong>MÚSICA</strong>
+                        <b>+</b>
+                    </button>
 
-                </p>
+                    <button data-info="fotos">
+                        <span>03</span>
+                        <strong>FOTOS</strong>
+                        <b>+</b>
+                    </button>
 
+                    <button data-info="baile">
+                        <span>04</span>
+                        <strong>BAILE</strong>
+                        <b>+</b>
+                    </button>
 
-                <button id="confirmarAsistencia" class="boton-principal reveal">
+                    <button data-info="sorpresa">
+                        <span>05</span>
+                        <strong>SORPRESA</strong>
+                        <b>+</b>
+                    </button>
 
-                    CONFIRMAR ASISTENCIA
+                    <button data-info="final">
+                        <span>06</span>
+                        <strong>???</strong>
+                        <b>+</b>
+                    </button>
 
-                    <span>
-                        ♡
+                </div>
+
+                <div id="respuesta" class="respuesta">
+
+                    <span id="respuestaNumero">
+                        00
                     </span>
 
-                </button>
+                    <p id="respuestaTexto">
+                        Seleccioná un archivo.
+                    </p>
 
-
-                <a href="https://www.google.com/maps" target="_blank" class="boton-mapa reveal">
-                    VER UBICACIÓN
-                </a>
+                </div>
 
             </div>
 
         </section>
 
 
+        <!-- CUENTA REGRESIVA -->
+        <section class="seccion countdown">
 
-        <!-- =====================================
-             FOOTER
-        ====================================== -->
+            <div class="numero">
+                05 / 06
+            </div>
 
-        <footer>
+            <div class="countdown-contenido">
 
-            <div class="footer-linea"></div>
+                <p class="etiqueta">
+                    CUENTA REGRESIVA
+                </p>
 
+                <h2>
+                    El momento<br>
+                    se acerca.
+                </h2>
 
-            <div class="footer-fecha reveal">
+                <div class="reloj">
 
-                <strong>
-                    24
-                </strong>
+                    <div class="tiempo">
+                        <strong id="dias">00</strong>
+                        <span>DÍAS</span>
+                    </div>
 
-                <span>
-                    SEPTIEMBRE
-                    <br>
-                    NUESTRO DÍA
-                </span>
+                    <div class="separador">:</div>
+
+                    <div class="tiempo">
+                        <strong id="horas">00</strong>
+                        <span>HORAS</span>
+                    </div>
+
+                    <div class="separador">:</div>
+
+                    <div class="tiempo">
+                        <strong id="minutos">00</strong>
+                        <span>MIN</span>
+                    </div>
+
+                    <div class="separador">:</div>
+
+                    <div class="tiempo">
+                        <strong id="segundos">00</strong>
+                        <span>SEG</span>
+                    </div>
+
+                </div>
+
+                <div class="fecha-reloj">
+                    26 · 09 · 2026 — 11:00 HS a 16:00 HS
+                </div>
 
             </div>
 
+        </section>
 
-            <div class="footer-flecha">
-                ↓
+        </section>
+
+
+        <!-- FINAL -->
+        <section class="seccion final">
+
+            <div class="final-contenido">
+
+                <p class="etiqueta">
+                    FIN DEL EXPEDIENTE
+                </p>
+
+                <h2>
+                    Bueno...
+                </h2>
+
+                <h3>
+                    Ya sabés todo.
+                </h3>
+
+                <p class="falta">
+                    Ahora falta una sola cosa.
+                </p>
+
+                <button id="venirBtn">
+                    ¿VENÍS?
+                    <span>♡</span>
+                </button>
+
             </div>
 
-
-            <div class="footer-fecha reveal">
-
-                <strong>
-                    26
-                </strong>
-
-                <span>
-                    SEPTIEMBRE
-                    <br>
-                    NUESTRO FESTEJO
-                </span>
-
-            </div>
-
-
-            <h3 class="reveal">
-
-                EVU
-                <small>&</small>
-                AYLU
-
-            </h3>
-
-
-            <p class="gracias reveal">
-                Te esperamos. ♡
-            </p>
-
-        </footer>
-
+        </section>
 
     </main>
 
 
+    <!-- PANTALLA FINAL -->
 
-    <!-- =========================================
-         MODAL
-    ========================================== -->
+    <div id="finalPantalla" class="final-pantalla">
 
-    <div id="modal" class="modal">
+        <div class="particulas"></div>
 
-        <div class="modal-contenido">
-
-            <button id="cerrarModal" class="cerrar">
-                ×
-            </button>
-
-
-            <span class="modal-icono">
-                ♡
-            </span>
-
-
-            <p class="etiqueta">
-                ¡GENIAL!
-            </p>
-
-
-            <h2>
-                TE ESPERAMOS
-            </h2>
-
+        <div class="final-mensaje">
 
             <p>
-                Evu & Aylu están esperando
-                compartir este día con vos.
+                EXPEDIENTE CERRADO
             </p>
 
+            <h2>
+                ¡TE ESPERAMOS!
+            </h2>
+
+            <div class="final-linea"></div>
 
             <strong>
-                26 DE SEPTIEMBRE · 11:00 HS
+                26 · 09 · 2026
             </strong>
+
+            <span>
+                11:00 HS a 16:00 HS
+            </span>
+
+            <small>
+                EVU & AYLU ♡
+            </small>
 
         </div>
 
     </div>
-
 
 
     <script src="script.js"></script>
