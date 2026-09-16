@@ -14,9 +14,6 @@ const archiveScreen =
 const analysisScreen =
     document.getElementById("analysisScreen");
 
-const finalScreen =
-    document.getElementById("finalScreen");
-
 const confirmationScreen =
     document.getElementById("confirmationScreen");
 
@@ -29,13 +26,6 @@ const accessButton =
 
 const continueButton =
     document.getElementById("continueButton");
-
-const locationButton =
-    document.getElementById("locationButton");
-
-const yesButton =
-    document.getElementById("yesButton");
-
 
 const terminalLines =
     document.getElementById("terminalLines");
@@ -62,14 +52,6 @@ const analysisText =
 
 const analysisResult =
     document.getElementById("analysisResult");
-
-
-const locationReveal =
-    document.getElementById("locationReveal");
-
-const missionText =
-    document.getElementById("missionText");
-
 
 
 /* =========================================================
@@ -326,7 +308,7 @@ const fileData = {
             <div class="location-modal-box">
                 <strong>
                    <a href="https://maps.app.goo.gl/8ByVy2pudiYjXPne9" target="_blank"  style="text-decoration: none; color: #ffffff;">
-                        EN MI CASA (Toca para abrir en Google Maps)
+                        En Nuestra Casita (Tocaii para abrir en Google Maps :) )
                    </a>
                 </strong>
 
@@ -704,13 +686,13 @@ async function startGuestAnalysis() {
 
     await barraAnalisis(
         "Probabilidad de venir",
-        94,
+        50,
         1400
     );
 
 
     await escribirLinea(
-        "Probabilidad de venir 94%",
+        "Probabilidad de venir 50%",
         "green"
     );
 
@@ -728,13 +710,13 @@ async function startGuestAnalysis() {
 
     await barraAnalisis(
         "Capacidad para comer torta",
-        100,
+        90,
         1200
     );
 
 
     await escribirLinea(
-        "Capacidad para comer torta 100%",
+        "Capacidad para comer torta 90%",
         "green"
     );
 
@@ -752,13 +734,13 @@ async function startGuestAnalysis() {
 
     await barraAnalisis(
         "Capacidad para hacer quilombo",
-        100,
+        1000,
         1200
     );
 
 
     await escribirLinea(
-        "Capacidad para hacer quilombo 100%",
+        "Capacidad para hacer quilombo 1000%",
         "pink"
     );
 
@@ -800,96 +782,10 @@ async function startGuestAnalysis() {
 
 continueButton.addEventListener("click", () => {
 
-    showScreen(finalScreen);
-
-    startFinalSequence();
+    showScreen(confirmationScreen);
 
 });
 
 
 
-/* =========================================================
-   SECUENCIA FINAL
-========================================================= */
-
-function startFinalSequence() {
-
-    locationReveal.classList.remove("show");
-
-    missionText.classList.remove("show");
-
-    setTimeout(() => {
-
-        document.getElementById(
-            "finalMessage"
-        ).style.opacity = "1";
-
-    }, 300);
-
-}
-
-
-
-/* =========================================================
-   UBICACION
-========================================================= */
-
-locationButton.addEventListener("click", () => {
-
-    locationButton.style.display = "none";
-
-    locationReveal.classList.add("show");
-
-
-    setTimeout(() => {
-
-        missionText.classList.add("show");
-
-    }, 1000);
-
-});
-
-
-
-/* =========================================================
-   CONFIRMACION WHATSAPP
-========================================================= */
-
-yesButton.addEventListener("click", () => {
-
-    createConfetti();
-
-
-    setTimeout(() => {
-
-        showScreen(confirmationScreen);
-
-    }, 900);
-
-
-    setTimeout(() => {
-
-        const phone =
-            "5492944602390";
-
-
-        const message =
-            "¡Sí, voy al cumpleaños! Nos vemos el 26 de septiembre.";
-
-
-        const whatsappUrl =
-            "https://wa.me/2944602390" +
-            phone +
-            "?text=" +
-            encodeURIComponent(message);
-
-
-        window.open(
-            whatsappUrl,
-            "_blank"
-        );
-
-    }, 1200);
-
-});
 
